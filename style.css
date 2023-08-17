@@ -33,9 +33,9 @@ img {
     pointer-events: none;
     transform: translateX(-50%);   
     transition: opacity 0.2s ease-in-out;   
-  }
-  
-  .server-logo:hover .nombre{
+}
+
+.server-logo:hover .nombre{
     opacity: 1;
 }
 
