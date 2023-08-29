@@ -148,7 +148,7 @@ img {
     border-radius: 10px;
     padding-left: 5px;
     padding-right: 5px;
-    outline: 3px solid #23272a;
+    outline: 3px solid #ffffff;
     right: 10%;
     top: 70%;
 }
@@ -164,7 +164,7 @@ img {
     width: 250px;
     height: 100vh;
     background-color: #252B48;
-    color: gray;
+    color: #ffff;
 }
 
 .sidebar__top {
