@@ -9,7 +9,8 @@ const menuSinCanales = document.getElementById("sinservidor");
 const servidor_btn = document.querySelector(".server-logo");
 
 // form.addEventListener("submit", sendMessage)
-
+var servidor_en_uso = 0;
+var canal_en_uso = 0;
 // //agreguemos accion al boton de logo discordia
 logo_btn.addEventListener("click", () => {
   menuSinCanales.style.display = "block";
@@ -44,33 +45,7 @@ function ocultarSpinner() {
 
 //Trabajemos con la carga del aside de los servidores
 function obtenerServidores() {
-  // const listadoDeServidores = [
-  //     {
-  //         icono: "musica.png",
-  //         nombre: "musica",
-  //         count: 8,
-  //     },
-  //     {
-  //         icono: "video-juegos.png",
-  //         nombre: "juegos",
-  //         count: 50,
-  //     },
-  //     {
-  //         icono: "Lengua-literatura.png",
-  //         nombre: "literatura",
-  //         count: 120,
-  //     },
-  //     {
-  //         icono: "deportes.png",
-  //         nombre: "deportes",
-  //         count: 20,
-  //     },
-  //     {
-  //         icono: "viajes.png",
-  //         nombre: "viajes",
-  //         count: 25,
-  //     }
-  // ];
+ 
   const listadoDeServidores = [];
   mostrarSpinner();
 
@@ -99,18 +74,7 @@ function obtenerServidores() {
       console.error("Error al obtener los Servidores:", error);
     });
 
-  //Peticion http de canales
  
-
-  // function llenarServidores(servidores) {
-  //   for (const servidor of servidores.Servers) {
-  //     listadoDeServidores.push({
-  //       icono: "video-juegos.png",
-  //       nombre: servidor.nombre_servidor,
-  //       count: 10,
-  //     });
-  //   }
-  // }
   return Promise.all(listadoDeServidores);
 }
 
@@ -165,14 +129,15 @@ function obtenerCanalesbyDB(server_id) {
       //llenarServidores(data);
       //ocultarSpinner();
       for (const canal of data) {
-        console.log(data)
+        //console.log(data)
         canalesList2.push({
           icono: "numeral.png",
           nombre: canal.name_channel,          
+          id_canal: canal.id_channel, 
         });
       }
       //ocultarSpinner();
-      renderizarCanales(canalesList2);
+      renderizarCanales(canalesList2, server_id);
       return canalesList2;
     })
     .catch((error) => {
@@ -204,21 +169,14 @@ function ocultarSpinner() {
 
 function obtenerCanales() {
   
-  
-  // function llenarCanales(canales) {
-  //   for (const canal of canales) {
-  //     listadoDeCanales.push({
-  //       icono: "video-juegos.png",
-  //       nombre: canal.nombre,
-  //       count: 10,
-  //     });
-  //   }
-  // }
+   
   return Promise.all(listadoDeCanales);
 }
 
-function renderizarCanales(canales) {  
+function renderizarCanales(canales, server_id) {  
+ 
   ocultarSpinner();  
+  
 
   limpiarCanalesAnteriores();
 
@@ -230,7 +188,7 @@ function renderizarCanales(canales) {
     canalElemento.addEventListener("click", () => {
         // menuSinCanales.style.display = "none"
         // menuCanales.style.display = "block"
-        obtenerMensajes(canal.id_channel, canal.id_server)
+        obtenerMensajes(canal.id_canal, server_id)
       })
 
     // Crear el elemento de icono
@@ -257,7 +215,7 @@ function renderizarCanales(canales) {
 
 /**Inicio manejo de mensajes */
 
-const mensajesList = document.getElementById("mensajes-list");
+const mensajesList = document.querySelector(".chat__messages");
 
 //limpiar el aside de canales antes de recargar
 function limpiarMensajesAnteriores() {
@@ -266,10 +224,13 @@ function limpiarMensajesAnteriores() {
   }
 }
 
-function obtenerMensajes(server_id, canal_id) {
+function obtenerMensajes(canal_id, server_id) {
+  servidor_en_uso = server_id
+  canal_en_uso = canal_id
+
   const mensajes = [];
 
-  fetch(`https://api-2-svwb.onrender.com/api/message/${server_id}/${canal_id}`)
+  fetch(`https://api-2-svwb.onrender.com/api/message/${canal_id}`)
     .then((response) => {
       if (!response.ok) {
         throw new Error("No se pudo obtener la lista de mensajes");
@@ -277,65 +238,151 @@ function obtenerMensajes(server_id, canal_id) {
       return response.json();
     })
     .then((data) => {        
-      console.log(data)
-      // for (const mensaje of data) {
-      //   console.log(data)
-      //   mensajes.push({
-      //     icono: "numeral.png",
-      //     nombre: canal.name_channel,          
-      //   });
-      // }
-      //ocultarSpinner();
-      //renderizarCanales(canalesList2);
+      //console.log(data)
+      for (const mensaje of data) {
+        
+        mensajes.push({
+          autor: mensaje.Nick,
+          mensaje: mensaje.Mensaje,  
+          fecha: mensaje.Fecha_Creacion        
+        });
+      }      
+      //ocultarSpinner();      
+      renderizarMensajes(mensajes);
       return mensajes;
     })
     .catch((error) => {
-      console.error("Error al obtener los Canales:", error);
+      console.error("Error al obtener los Mensajes:", error);
     });
 }
 
+function renderizarMensajes(mensajes) {    
+  ocultarSpinner();    
+  
+
+  limpiarMensajesAnteriores();
+  mensajes = mensajes.reverse();
+  for (const item of mensajes) {
+    const { autor, mensaje, fecha } = item;
+    console.log({item})
+    
+    const mensajeElemento = document.createElement("div");
+    mensajeElemento.classList.add("message");
+    mensajeElemento.style.marginBottom = "20px";
+    // mensajeElemento.addEventListener("click", () => {
+    //     // menuSinCanales.style.display = "none"
+    //     // menuCanales.style.display = "block"
+         //obtenerMensajes(canal.id_canal)
+    //   })
+
+    // Crear la imagen del mensaje
+    const imagenElemento = document.createElement("img");
+    imagenElemento.src = "assets/user.png";
+    imagenElemento.alt = "avatar";
+    // imagenElemento.classList.add("icono-canal");
+    mensajeElemento.appendChild(imagenElemento);
+
+    // Crear el elemento del mensaje del canal
+    const infoElemento = document.createElement("div");
+    infoElemento.classList.add("message__info");
+    const tituloElemento = document.createElement("h4");
+    tituloElemento.innerHTML = autor;
+    const fechaElemento = document.createElement("span");
+    fechaElemento.innerHTML = fecha;
+    tituloElemento.appendChild(fechaElemento);
+    infoElemento.appendChild(tituloElemento);
+    //aqui se podria agregar un salto de linea
+    mensajeElemento.appendChild(infoElemento);
+
+    const cuerpoMensaje = document.createElement("p");
+    cuerpoMensaje.innerHTML = "    " + mensaje;
+    
+    infoElemento.appendChild(cuerpoMensaje);
+    mensajeElemento.appendChild(cuerpoMensaje);
+
+        
+    // const titulo = document.createElement("h1");
+    // titulo.innerHTML = "PRUEBA";
+    // mensajesList.appendChild(titulo);
+    mensajesList.appendChild(mensajeElemento);
+  }
+}
 
 
 //funcion que emite mensajes
 function sendMessage(e) {
   e.preventDefault();
+  
 
   if (input.value !== "") {
-    var messageDiv = document.createElement("div");
-    messageDiv.className = "message";
+    //armemos el json
+    const nuevo_mensaje = {
+      "mensajes": input.value,
+      "servidor_id": servidor_en_uso,
+      "canal_id": canal_en_uso,
+      "autor_id": 3
+     }
 
-    var avatar = document.createElement("img");
-    avatar.src = "assets/user4.jpg";
+     //armemos los datos de request
+     const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(nuevo_mensaje)
+     }
 
-    var messageInfo = document.createElement("div");
-    messageInfo.className = "message__info";
+    fetch(`https://api-2-svwb.onrender.com/api/message/add`, requestOptions)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Error al crear el nuevo mensaje");
+      }
+      return response.json();
+    })
+    .then((data) => {        
+      
+            
+      //ocultarSpinner();
+      //obtenerMensajes(canal.id_canal)
+      obtenerMensajes(canal_en_uso)
+      return;
+    })
+    .catch((error) => {
+      console.error("Error al postear mensaje", error);
+    });
+    // var messageDiv = document.createElement("div");
+    // messageDiv.className = "message";
 
-    var userInfo = document.createElement("h4");
-    userInfo.innerHTML = "Gamer";
+    // var avatar = document.createElement("img");
+    // avatar.src = "assets/user4.jpg";
 
-    var messageTimestamp = document.createElement("span");
-    messageTimestamp.className = "message__timestamp";
+    // var messageInfo = document.createElement("div");
+    // messageInfo.className = "message__info";
 
-    const date = new Date();
-    const year = date.getFullYear();
-    const month = String(date.getMonth()).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
+    // var userInfo = document.createElement("h4");
+    // userInfo.innerHTML = "Gamer";
 
-    messageTimestamp.innerHTML = month + "/" + day + "/" + year;
+    // var messageTimestamp = document.createElement("span");
+    // messageTimestamp.className = "message__timestamp";
 
-    const message = document.createElement("p");
-    message.innerHTML = input.value;
-    input.value = "";
+    // const date = new Date();
+    // const year = date.getFullYear();
+    // const month = String(date.getMonth()).padStart(2, "0");
+    // const day = String(date.getDate()).padStart(2, "0");
 
-    userInfo.appendChild(messageTimestamp);
-    messageInfo.appendChild(userInfo);
-    messageInfo.appendChild(message);
+    // messageTimestamp.innerHTML = month + "/" + day + "/" + year;
 
-    messageDiv.appendChild(avatar);
-    messageDiv.appendChild(messageInfo);
+    // const message = document.createElement("p");
+    // message.innerHTML = input.value;
+    // input.value = "";
 
-    chatMessages.appendChild(messageDiv);
-    chatMessages.scrollBy(0, 10000);
+    // userInfo.appendChild(messageTimestamp);
+    // messageInfo.appendChild(userInfo);
+    // messageInfo.appendChild(message);
+
+    // messageDiv.appendChild(avatar);
+    // messageDiv.appendChild(messageInfo);
+
+    // chatMessages.appendChild(messageDiv);
+    // chatMessages.scrollBy(0, 10000);
   }
 }
 

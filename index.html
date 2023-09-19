@@ -47,29 +47,7 @@
 
       <div id="opciones-barra-lateral">
         <div>
-          <button id="nuevo-canal">Crear Nuevo Canal</button>
-          <!-- <div class="sidebar__user">
-              <div>
-                <span class="status"></span>
-                <img src="assets/user1.jpg" alt="avatar" />
-              </div>
-              <h4>Hacker</h4>
-            </div>
-            <div class="sidebar__user">
-              <div>
-                <span class="status"></span>
-                <img src="assets/user2.jpg" alt="avatar" />
-              </div>
-              <h4>E-Girl</h4>
-            </div>
-            <div class="sidebar__user">
-              <div>
-                <span class="status"></span>
-                <img src="assets/user3.jpg" alt="avatar" />
-              </div>
-              <h4>ManInBlack</h4>
-            </div>
-          </div>-->
+          <button id="nuevo-canal">Crear Nuevo Canal</button>          
         </div>
 
         <div class="sidebar__profile">
@@ -176,7 +154,7 @@
         </div>
       </div>
       <div class="chat__messages">
-        <div class="message">
+        <!-- <div class="message">
           <img src="assets/user3.jpg" alt="avatar" />
           <div class="message__info">
             <h4>
@@ -184,12 +162,13 @@
             </h4>
             <p>Hello</p>
           </div>
-        </div>
+        </div> -->
       </div>
 
+      <!-- formulario de carga de mensaje nuevo -->
       <div class="chat__input">
         <i class="fas fa-plus-circle fa-lg"></i>
-        <form>
+        <form onsubmit=sendMessage(event)>
           <input class="sendMessage" type="text" placeholder="send message" />
           <button class="chat__inputButton" type="submit">Send</button>
         </form>
