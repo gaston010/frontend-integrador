@@ -223,7 +223,14 @@ img {
     }
 }
 
-.message__count {
+.message__info{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* .message__count {
     position: absolute;
     color: #3A2640;
     font-weight: 600;
@@ -235,7 +242,7 @@ img {
     outline: 3px solid #23272a;
     right: 10%;
     top: 70%;
-}
+} */
 
 ::-webkit-scrollbar {
     width: 0;
@@ -456,15 +463,29 @@ img {
     overflow: scroll;
 }
 
+
+
 .message {
     display: flex;
-    align-items: center;
-    padding: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 40px;
+    
     color: #fff;
+}
+
+.message__body{
+    display: flex;
+    flex-direction: row;
+    justify-content: first baseline;
+    align-items: center;
+    
+    
 }
 
 .message__info {
     margin-left: 20px;
+    margin-bottom: 10px;
 }
 
 .message__timestamp {

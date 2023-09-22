@@ -154,22 +154,14 @@
         </div>
       </div>
       <div class="chat__messages">
-        <!-- <div class="message">
-          <img src="assets/user3.jpg" alt="avatar" />
-          <div class="message__info">
-            <h4>
-              ManInBlack <span class="message__timestamp">04/28/2022</span>
-            </h4>
-            <p>Hello</p>
-          </div>
-        </div> -->
+       
       </div>
 
       <!-- formulario de carga de mensaje nuevo -->
       <div class="chat__input">
         <i class="fas fa-plus-circle fa-lg"></i>
         <form onsubmit=sendMessage(event)>
-          <input class="sendMessage" type="text" placeholder="send message" />
+          <input class="sendMessage" type="text" placeholder="send message" disabled="true"/>
           <button class="chat__inputButton" type="submit">Send</button>
         </form>
         <div class="chat__inputIcons">

@@ -8,6 +8,7 @@ const menuCanales = document.getElementById("conservidor");
 const menuSinCanales = document.getElementById("sinservidor");
 const servidor_btn = document.querySelector(".server-logo");
 
+
 // form.addEventListener("submit", sendMessage)
 var servidor_en_uso = 0;
 var canal_en_uso = 0;
@@ -31,6 +32,7 @@ function limpiarServidoresAnteriores() {
   while (serversList.firstChild) {
     serversList.removeChild(serversList.firstChild);
   }
+  
 }
 
 function mostrarSpinner() {  
@@ -86,8 +88,8 @@ function renderizarServidores(servidores) {
     const servidorElemento = document.createElement("div");
     servidorElemento.classList.add("server-logo");
     servidorElemento.style.marginBottom = "20px";
-    servidorElemento.addEventListener("click", () => {
-      console.log(`El id del servidor ${servidor_id}`);
+    servidorElemento.addEventListener("click", () => {      
+      input.disabled = true;
       menuSinCanales.style.display = "none";
       menuCanales.style.display = "block";
       obtenerCanalesbyDB(+servidor_id)
@@ -258,46 +260,54 @@ function obtenerMensajes(canal_id, server_id) {
 
 function renderizarMensajes(mensajes) {    
   ocultarSpinner();    
-  
+  input.disabled = false;
 
   limpiarMensajesAnteriores();
   mensajes = mensajes.reverse();
   for (const item of mensajes) {
     const { autor, mensaje, fecha } = item;
-    console.log({item})
     
     const mensajeElemento = document.createElement("div");
     mensajeElemento.classList.add("message");
     mensajeElemento.style.marginBottom = "20px";
-    // mensajeElemento.addEventListener("click", () => {
-    //     // menuSinCanales.style.display = "none"
-    //     // menuCanales.style.display = "block"
-         //obtenerMensajes(canal.id_canal)
-    //   })
+    
 
     // Crear la imagen del mensaje
     const imagenElemento = document.createElement("img");
     imagenElemento.src = "assets/user.png";
     imagenElemento.alt = "avatar";
     // imagenElemento.classList.add("icono-canal");
-    mensajeElemento.appendChild(imagenElemento);
+    //mensajeElemento.appendChild(imagenElemento);
 
     // Crear el elemento del mensaje del canal
+    //encabezado
     const infoElemento = document.createElement("div");
     infoElemento.classList.add("message__info");
+    
     const tituloElemento = document.createElement("h4");
     tituloElemento.innerHTML = autor;
     const fechaElemento = document.createElement("span");
-    fechaElemento.innerHTML = fecha;
-    tituloElemento.appendChild(fechaElemento);
+    //trabajemos la fecha    
+    const dato = new Date(fecha);
+    const dia = dato.getDate();
+    const mes = dato.getMonth() + 1;
+    const anio = dato.getFullYear();
+    const fecha_aux = `${dia}/${mes}/${anio}`;
+    fechaElemento.innerHTML = fecha_aux;
+    //tituloElemento.appendChild(fechaElemento);
     infoElemento.appendChild(tituloElemento);
+    infoElemento.appendChild(fechaElemento);
     //aqui se podria agregar un salto de linea
     mensajeElemento.appendChild(infoElemento);
 
-    const cuerpoMensaje = document.createElement("p");
-    cuerpoMensaje.innerHTML = "    " + mensaje;
+    const cuerpoMensaje = document.createElement("div");
+    cuerpoMensaje.classList.add("message__body");
+    const textoMensaje = document.createElement("p");
+    textoMensaje.innerHTML = mensaje;
+    cuerpoMensaje.appendChild(imagenElemento);
+    cuerpoMensaje.appendChild(textoMensaje);
     
-    infoElemento.appendChild(cuerpoMensaje);
+    //infoElemento.appendChild(cuerpoMensaje);
     mensajeElemento.appendChild(cuerpoMensaje);
 
         
@@ -335,6 +345,7 @@ function sendMessage(e) {
       if (!response.ok) {
         throw new Error("Error al crear el nuevo mensaje");
       }
+      input.value = "";
       return response.json();
     })
     .then((data) => {        
