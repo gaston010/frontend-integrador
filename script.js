@@ -10,6 +10,8 @@ const servidor_btn = document.querySelector(".server-logo");
 const btn_crear_servidor = document.getElementById("boton-crear-servidor");
 const modal_crear_servidor = document.getElementById("myModal");
 const boton_cancelar_crear_servidor = document.getElementById("btn-cancel-submit-server");
+const form_crear_servidor = document.getElementById("form-crear-servidor");
+
 
 //manejo de datos del usuario
 const id_user = localStorage.getItem("userId");
@@ -46,9 +48,46 @@ btn_crear_servidor.addEventListener("click", () => {
   modal_crear_servidor.style.display = "block";
 })
 //agreguemos evento al boton de cancelar crear servidor
-boton_cancelar_crear_servidor.addEventListener("click", () => {
-  modal_crear_servidor.style.display = "nome";
-})
+boton_cancelar_crear_servidor.addEventListener("click", () => {  
+  modal_crear_servidor.style.display = "none";
+});
+
+//evento submit del formulario de crear servidor
+form_crear_servidor.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const data_server = {    
+      "nombre_servidor": document.getElementById("nombre").value,
+      "descripcion": document.getElementById("descrip").value,
+      "autor_id": +id_user  
+  }
+
+  //armemos los datos de request
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data_server)
+   }
+
+  //fetch que crea el mensaje en la base de datos
+  fetch(`https://api-2-svwb.onrender.com/api/server/add`, requestOptions)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Error al crear el nuevo servidor");
+      }
+      
+      return response.json();
+    })
+    .then((data) => {        
+      
+      console.log(data)      
+      //ocultarSpinner();      
+      obtenerServidores()
+      return;
+    })
+    .catch((error) => {
+      console.error("Error al postear nuevo servidor", error);
+    });
+});
 
 //limpiar el aside de canales antes de recargar
 function limpiarServidoresAnteriores() {
