@@ -4,10 +4,23 @@
 }
 
 body {
+    justify-items: center;
+    /* align-items: center;
+    flex-direction: column; */
     display: flex;
     font-family: sans-serif;
     overflow: hidden;
+    background-color: #445069;
+    /* padding-top: 100px; */
+    background-image:"assets/discordia2.jpg";
+    background-size:cover ;
 }
+
+/* body {
+    display: flex;
+    font-family: sans-serif;
+    overflow: hidden;
+} */
 
 img {
     height: 50px;
@@ -95,7 +108,7 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #3A2640;
+    background-color:#1F2D40;
     overflow-y: scroll;
     height: 100vh;
     width: 100px;
@@ -408,7 +421,7 @@ img {
 .chat {
     display: flex;
     flex-direction: column;
-    background-color: #3A2640;
+    background-color: #1F2D40;
     height: 100vh;
     flex: 1;
 }
@@ -585,4 +598,181 @@ img {
     .chatHeader__left {
         display: none;
     }
+}
+/* * {
+    margin: 0;
+    padding: 0;
+    } */
+
+
+
+.title {
+    font: size 20px;
+
+}
+#titulo {
+color: aliceblue;
+}
+
+
+#loginForm {
+background-color: rgb(80, 112, 148);
+position: center;
+margin-top: 50px;
+display: flex;
+flex-direction: column;
+justify-items: center;
+align-items: center;
+margin: 30px;
+padding: 30px;
+border-radius: .8em;
+
+}
+
+#logo_usuario{
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+#loginForm input {
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    border-bottom: 1px solid #a8a8a8;
+
+}
+button {
+cursor: pointer;
+background-color: #61677A;
+padding: 10px 30px;
+color: #f0f8ff;
+border-radius: .7em;
+}
+button:hover {
+    background-color:#d9805f
+
+}
+#registration{
+    font: size 20px;
+    color:aliceblue;
+    padding: 20px;
+}
+.RegisterForm{
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    border-bottom: 1px solid #a8a8a8;
+}
+
+#perfil {
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color:  rgb(80, 112, 148);
+}
+
+#datos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#imagen {
+    width: 10px;
+    height: 20px;
+    border-radius: 20%;
+}
+
+.nombre_usuario, .nick, .nombre, .apellido, .email {
+    width: 95%;
+    padding: 10px;
+    border: 2px solid #252B48;
+    margin-bottom: 10px;
+    color: aliceblue;
+}
+
+
+#botones {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+#contraseña {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#contraseña_actual, #nueva_contraseña, #confirmar_contraseña {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #252B48;
+    margin-bottom: 10px;
+}
+
+#Ccontraseña {
+    font-size: large;
+    color:aliceblue;
+}
+
+/* manejo de modal */
+
+.modal {
+    display: none;
+    position: relative;
+    border-radius: 30px;
+    padding: 30px;
+    margin: 10rem;
+    color: white;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+}
+
+.modal-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-button{    
+    background-color: #4AA6F4;
+    color: black;
+}
+
+.formModal{
+    display: flex;
+    flex-direction: column;    
+    width: 100%;
+    
+}
+
+.form-modal-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;    
+    margin: 20px auto;
+}
+
+.input-modal{
+    width: 50%;
 }

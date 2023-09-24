@@ -7,6 +7,21 @@ const logo_btn = document.querySelector(".logo");
 const menuCanales = document.getElementById("conservidor");
 const menuSinCanales = document.getElementById("sinservidor");
 const servidor_btn = document.querySelector(".server-logo");
+const btn_crear_servidor = document.getElementById("boton-crear-servidor");
+const modal_crear_servidor = document.getElementById("myModal");
+const boton_cancelar_crear_servidor = document.getElementById("btn-cancel-submit-server");
+
+//manejo de datos del usuario
+const id_user = localStorage.getItem("userId");
+
+//manejo de logo usuario
+const logo_usuario = document.getElementById("logo_usuario");
+
+const dato_logo = localStorage.getItem("userAvatar");
+console.log(dato_logo);
+logo_usuario.src = dato_logo
+
+
 
 
 // form.addEventListener("submit", sendMessage)
@@ -15,8 +30,7 @@ var canal_en_uso = 0;
 // //agreguemos accion al boton de logo discordia
 logo_btn.addEventListener("click", () => {
   menuSinCanales.style.display = "block";
-  menuCanales.style.display = "none";
-  console.log("clickeando el logo");
+  menuCanales.style.display = "none";  
 });
 
 // servidor_btn.addEventListener("click", () => {
@@ -26,6 +40,15 @@ logo_btn.addEventListener("click", () => {
 // })
 
 /* Inicio Manejo de Servidores */
+
+//agreguemos evento al boton de crear servidor
+btn_crear_servidor.addEventListener("click", () => {
+  modal_crear_servidor.style.display = "block";
+})
+//agreguemos evento al boton de cancelar crear servidor
+boton_cancelar_crear_servidor.addEventListener("click", () => {
+  modal_crear_servidor.style.display = "nome";
+})
 
 //limpiar el aside de canales antes de recargar
 function limpiarServidoresAnteriores() {
@@ -51,7 +74,7 @@ function obtenerServidores() {
   const listadoDeServidores = [];
   mostrarSpinner();
 
-  fetch("https://api-2-svwb.onrender.com/api/server/list")
+  fetch(`https://api-2-svwb.onrender.com/api/server/user/${id_user}`)
     .then((response) => {
       if (!response.ok) {
         throw new Error("No se pudo obtener la lista de servidores");
@@ -60,11 +83,13 @@ function obtenerServidores() {
     })
     .then((data) => {
       //llenarServidores(data);
-      for (const servidor of data.Servers) {
+      
+      for (const servidor of data) {        
+        console.log(servidor)
         listadoDeServidores.push({
-          servidor_id: servidor.id_servidor,
+          servidor_id: servidor.Servidor.servidor_id,
           icono: "video-juegos.png",
-          nombre: servidor.nombre_servidor,
+          nombre: servidor.Servidor.nombre_servidor,
           count: 10,
         });
       }
@@ -274,7 +299,7 @@ function renderizarMensajes(mensajes) {
 
     // Crear la imagen del mensaje
     const imagenElemento = document.createElement("img");
-    imagenElemento.src = "assets/user.png";
+    imagenElemento.src = dato_logo
     imagenElemento.alt = "avatar";
     // imagenElemento.classList.add("icono-canal");
     //mensajeElemento.appendChild(imagenElemento);
@@ -396,6 +421,7 @@ function sendMessage(e) {
     // chatMessages.scrollBy(0, 10000);
   }
 }
+
 
 
 
