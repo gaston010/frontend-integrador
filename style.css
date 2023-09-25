@@ -227,6 +227,14 @@ img {
     animation: spin 2s linear infinite;    
 }
 
+#spinner-servidor{
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    
+}
+
 @keyframes spin{
     0%{
         transform: rotate(0deg);
@@ -241,6 +249,14 @@ img {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+#boton-reload-messages{
+    pointer-events: none;
+}
+
+#bomyModalton-reload-messages:hover{
+    cursor: pointer;
 }
 
 /* .message__count {

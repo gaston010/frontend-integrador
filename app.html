@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Discordia</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="https://kit.fontawesome.com/222cea3eed.js"></script>    
-    
+    <script src="https://kit.fontawesome.com/222cea3eed.js"></script>
   </head>
   <body>
     <!-- barra lateral de servidores -->
@@ -15,10 +14,9 @@
       <div class="logo">
         <img src="LOGO DISCORDIA.jpg" alt="Discord" />
         <!-- <img id="logo_usuario" alt=""> -->
-       
       </div>
       <section id="serversList"></section>
-      <!-- componente spinner -->
+      <!-- componente spinner del servidor -->
       <div class="spinner-container">
         <div class="spinner"></div>
       </div>
@@ -51,7 +49,7 @@
 
       <div id="opciones-barra-lateral">
         <div>
-          <button id="nuevo-canal">Crear Nuevo Canal</button>          
+          <button id="nuevo-canal">Crear Nuevo Canal</button>
         </div>
 
         <div class="sidebar__profile">
@@ -142,8 +140,8 @@
             <!-- <span class="chatHeader__Dm">@</span> -->
             <!-- <img id="logo_usuario" src="" alt=""> -->
             <!-- <img id="logo_usuario" src="https://ui-avatars.com/api/?background=random&name=Pablito" alt="Imagen de Pablito"> -->
-            <img id="logo_usuario" alt="Imagen de Pablito">
-            
+            <img id="logo_usuario" alt="Imagen de Pablito" />
+
             <h3>ManInBlack</h3>
           </div>
           <div class="chatHeader__right">
@@ -161,39 +159,99 @@
           </div>
         </div>
       </div>
-    <!-- modal para crear nuevo servidor -->
-    <div id="myModal" class="modal">
-      <div class="modal-content">          
+
+       <!-- modal para crear nuevo canal -->
+       <div id="modalNewChannel" class="modal">
+        <div class="modal-content">
+          <h2>Crear Nuevo Canal</h2>
+          <form id="form-crear-canal" class="formModal">
+            <div class="form-modal-item">
+              <label for="nombre">Nombre del Canal:</label>
+              <input
+                class="input-modal"
+                type="text"
+                id="nombre"
+                name="nombre"
+                required
+              />
+            </div>
+            <div class="form-modal-item">
+              <label for="descrip">Descripcion del Canal:</label>
+              <input
+                class="input-modal"
+                type="text"
+                id="descrip"
+                name="descripcion"
+                required
+              />
+            </div>
+            <div class="form-modal-item">
+              <button class="modal-button" type="submit">Guardar</button>
+              <button id="btn-cancel-submit-channel" class="modal-button">
+                Cancelar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- modal para crear nuevo servidor -->
+      <div id="myModal" class="modal">
+        <div class="modal-content">
           <h2>Crear un Servidor</h2>
           <form id="form-crear-servidor" class="formModal">
-              <div class="form-modal-item">
-                <label for="nombre">Nombre del Servidor:</label>
-                <input class="input-modal" type="text" id="nombre" name="nombre" required>
-              </div>
-              <div class="form-modal-item">
-                <label for="descrip">Descripcion del Servidor:</label>
-                <input class="input-modal" type="text" id="descrip" name="descripcion" required>
-              </div>
-              <div class="form-modal-item">
-                <button class="modal-button"  type="submit">Guardar</button>
-                <button id="btn-cancel-submit-server" class="modal-button">Cancelar</button>
-              </div>
+            <div class="form-modal-item">
+              <label for="nombre">Nombre del Servidor:</label>
+              <input
+                class="input-modal"
+                type="text"
+                id="nombre"
+                name="nombre"
+                required
+              />
+            </div>
+            <div class="form-modal-item">
+              <label for="descrip">Descripcion del Servidor:</label>
+              <input
+                class="input-modal"
+                type="text"
+                id="descrip"
+                name="descripcion"
+                required
+              />
+            </div>
+            <div class="form-modal-item">
+              <button class="modal-button" type="submit">Guardar</button>
+              <button id="btn-cancel-submit-server" class="modal-button">
+                Cancelar
+              </button>
+            </div>
           </form>
+        </div>
       </div>
-  </div>
-      <div class="chat__messages">
-       
+
+      <!-- componente spinner del modal de crear nuevo servidor -->
+      <div id="spinner-servidor">
+        <div class="spinner"></div>
       </div>
+
+      <!-- cuerpo de despliegue de mensajes -->
+      <div class="chat__messages"></div>
 
       <!-- formulario de carga de mensaje nuevo -->
       <div class="chat__input">
         <i class="fas fa-plus-circle fa-lg"></i>
-        <form onsubmit=sendMessage(event)>
-          <input class="sendMessage" type="text" placeholder="send message" disabled="true"/>
+        <form onsubmit="sendMessage(event)">
+          <input
+            class="sendMessage"
+            type="text"
+            placeholder="send message"
+            disabled="true"
+          />
           <button class="chat__inputButton" type="submit">Send</button>
         </form>
         <div class="chat__inputIcons">
-          <i class="fas fa-gift fa-lg"></i>
+          <i id="boton-reload-messages" class="fas fa-sync-alt" ></i>
           <i class="fas fa-file-image fa-lg"></i>
           <i class="fas fa-laugh fa-lg"></i>
         </div>

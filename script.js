@@ -6,11 +6,26 @@ const input = document.querySelector(".sendMessage");
 const logo_btn = document.querySelector(".logo");
 const menuCanales = document.getElementById("conservidor");
 const menuSinCanales = document.getElementById("sinservidor");
+
+//variables para manejar canales
+const btn_crear_canal = document.getElementById("nuevo-canal");
+const modal_crear_canal = document.getElementById("modalNewChannel");
+const boton_cancelar_crear_canal = document.getElementById("btn-cancel-submit-channel");
+const form_crear_canal = document.getElementById("form-crear-canal");
+
+//variables para manejar servidores
 const servidor_btn = document.querySelector(".server-logo");
 const btn_crear_servidor = document.getElementById("boton-crear-servidor");
 const modal_crear_servidor = document.getElementById("myModal");
 const boton_cancelar_crear_servidor = document.getElementById("btn-cancel-submit-server");
 const form_crear_servidor = document.getElementById("form-crear-servidor");
+const spinner_form_server = document.getElementById("spinner-servidor");
+//variables para saber en que canal y servidor estoy parado
+let canal_actual = 0
+let servidor_actual = 0
+
+//capturemos el boton de reload de mensajes
+const btn_reload_messages = document.getElementById("boton-reload-messages");
 
 
 //manejo de datos del usuario
@@ -48,13 +63,28 @@ btn_crear_servidor.addEventListener("click", () => {
   modal_crear_servidor.style.display = "block";
 })
 //agreguemos evento al boton de cancelar crear servidor
-boton_cancelar_crear_servidor.addEventListener("click", () => {  
+boton_cancelar_crear_servidor.addEventListener("click", (e) => {  
+  e.preventDefault();
   modal_crear_servidor.style.display = "none";
 });
+
+//manejo de spinner
+  //spinner_form_server = document.getElementById("spinner-servidor");
+  function mostrarSpinnerFormServer() {  
+    spinner_form_server.style.display = "flex";
+  }
+  
+  function ocultarSpinnerFormServer() {  
+    spinner_form_server.style.display = "none";
+  }
+
 
 //evento submit del formulario de crear servidor
 form_crear_servidor.addEventListener("submit", (e) => {
   e.preventDefault();
+  
+
+  //manejo de peticion http post
   const data_server = {    
       "nombre_servidor": document.getElementById("nombre").value,
       "descripcion": document.getElementById("descrip").value,
@@ -68,7 +98,9 @@ form_crear_servidor.addEventListener("submit", (e) => {
     body: JSON.stringify(data_server)
    }
 
-  //fetch que crea el mensaje en la base de datos
+   mostrarSpinnerFormServer();
+
+  // fetch que crea el mensaje en la base de datos
   fetch(`https://api-2-svwb.onrender.com/api/server/add`, requestOptions)
     .then((response) => {
       if (!response.ok) {
@@ -80,7 +112,7 @@ form_crear_servidor.addEventListener("submit", (e) => {
     .then((data) => {        
       
       console.log(data)      
-      //ocultarSpinner();      
+      ocultarSpinnerFormServer();      
       obtenerServidores()
       return;
     })
@@ -88,6 +120,79 @@ form_crear_servidor.addEventListener("submit", (e) => {
       console.error("Error al postear nuevo servidor", error);
     });
 });
+
+/* Inicio Manejo de Creacion  Canales */
+
+//agreguemos evento al boton de crear Canal
+btn_crear_canal.addEventListener("click", () => {
+  modal_crear_canal.style.display = "block";
+})
+//agreguemos evento al boton de cancelar crear nuevo canal
+boton_cancelar_crear_canal.addEventListener("click", (e) => {  
+  e.preventDefault();
+  modal_crear_canal.style.display = "none";
+});
+
+//manejo de spinner  
+  function mostrarSpinnerFormCanal() {  
+    spinner_form_server.style.display = "flex";
+  }
+  
+  function ocultarSpinnerFormCanal() {  
+    spinner_form_server.style.display = "none";
+  }
+
+
+//evento submit del formulario de crear servidor
+form_crear_canal.addEventListener("submit", (e) => {
+  e.preventDefault();
+  
+
+  //manejo de peticion http post
+  const data_channel = {    
+      "nombre_canal": document.getElementById("nombre").value,
+      "descripcion": document.getElementById("descrip").value,
+      "autor_id": +id_user,
+      "servidor_id": servidor_actual
+  }
+
+  //armemos los datos de request
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data_channel)
+   }
+   
+
+   mostrarSpinnerFormCanal();
+
+  //fetch que crea el nuevo canal la base de datos
+  fetch(`https://api-2-svwb.onrender.com/api/channel/add`, requestOptions)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Error al crear el nuevo Canal");
+      }
+      
+      return response.json();
+    })
+    .then((data) => {        
+      
+      console.log(data)      
+      ocultarSpinnerFormCanal();      
+      obtenerCanalesbyDB(servidor_actual)
+      return;
+    })
+    .catch((error) => {
+      console.error("Error al postear nuevo canal", error);
+    });
+
+});
+
+
+
+
+
+
 
 //limpiar el aside de canales antes de recargar
 function limpiarServidoresAnteriores() {
@@ -154,6 +259,7 @@ function renderizarServidores(servidores) {
     servidorElemento.style.marginBottom = "20px";
     servidorElemento.addEventListener("click", () => {      
       input.disabled = true;
+      servidor_actual = servidor_id
       menuSinCanales.style.display = "none";
       menuCanales.style.display = "block";
       obtenerCanalesbyDB(+servidor_id)
@@ -183,7 +289,7 @@ function renderizarServidores(servidores) {
 /**Inicio Manejo de Canales */
 function obtenerCanalesbyDB(server_id) {
   const canalesList2 = [];
-
+  
   fetch(`https://api-2-svwb.onrender.com/api/channel/server/${server_id}`)
     .then((response) => {
       if (!response.ok) {
@@ -191,9 +297,8 @@ function obtenerCanalesbyDB(server_id) {
       }
       return response.json();
     })
-    .then((data) => {        
-      //llenarServidores(data);
-      //ocultarSpinner();
+    .then((data) => {              
+      
       for (const canal of data) {
         //console.log(data)
         canalesList2.push({
@@ -254,6 +359,8 @@ function renderizarCanales(canales, server_id) {
     canalElemento.addEventListener("click", () => {
         // menuSinCanales.style.display = "none"
         // menuCanales.style.display = "block"
+        canal_actual = +canal.id_canal
+        servidor_actual = +server_id
         obtenerMensajes(canal.id_canal, server_id)
       })
 
@@ -281,6 +388,13 @@ function renderizarCanales(canales, server_id) {
 
 /**Inicio manejo de mensajes */
 
+//agreguemos accion al boton de reload de mensajes
+btn_reload_messages.addEventListener("click", () => {
+  console.log("haciendo click en reload")
+  console.log({canal_actual, servidor_actual})
+  obtenerMensajes(canal_actual, servidor_actual)
+})
+
 const mensajesList = document.querySelector(".chat__messages");
 
 //limpiar el aside de canales antes de recargar
@@ -291,6 +405,7 @@ function limpiarMensajesAnteriores() {
 }
 
 function obtenerMensajes(canal_id, server_id) {
+  mostrarSpinnerFormServer()
   servidor_en_uso = server_id
   canal_en_uso = canal_id
 
@@ -301,10 +416,11 @@ function obtenerMensajes(canal_id, server_id) {
       if (!response.ok) {
         throw new Error("No se pudo obtener la lista de mensajes");
       }
+      ocultarSpinnerFormServer()
       return response.json();
     })
     .then((data) => {        
-      //console.log(data)
+      
       for (const mensaje of data) {
         
         mensajes.push({
@@ -324,6 +440,7 @@ function obtenerMensajes(canal_id, server_id) {
 
 function renderizarMensajes(mensajes) {    
   ocultarSpinner();    
+  btn_reload_messages.style.pointerEvents = "auto";
   input.disabled = false;
 
   limpiarMensajesAnteriores();
