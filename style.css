@@ -31,6 +31,7 @@ img {
 
 #serversList{
     margin-top: 80px;
+    
 }
 
 .nombre{
@@ -52,8 +53,18 @@ img {
     display: flex;
     flex-direction: row;
     margin: 10px;
-    justify-content: space-around;
+    justify-content: flex-start;
+    align-items: center;    
+    border-radius: 10px;
+    padding: 10px;
+}
+
+  .canal-logo:hover{
+    background-color: #4189a1;
+    cursor: pointer;
   }
+
+  
 
   .icono-canal{
     height: 30px;
@@ -97,6 +108,7 @@ img {
     
     font-weight: bold;
     opacity: 1;    
+    margin-left: 1rem;
   }
   
   .server-logo:hover .nombre{
@@ -108,7 +120,7 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color:#1F2D40;
+    background-color:#17212F;
     overflow-y: scroll;
     height: 100vh;
     width: 100px;
@@ -129,7 +141,7 @@ img {
     position: absolute;
     top: 9%;
     left: 25%;
-    background-color: #644373;
+    background-color: #1F2D40;
 }
 
 .logo::after {
@@ -176,7 +188,7 @@ img {
     position: absolute;
     top: 50%;
     right: 110%;
-    background-color: #3a2640;
+    background-color: #1F2D40;
     border-radius: 50%;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
@@ -261,7 +273,7 @@ img {
 
 /* .message__count {
     position: absolute;
-    color: #3A2640;
+    color: #1F2D40;
     font-weight: 600;
     font-size: 12px;
     background: color #D9805F;
@@ -285,8 +297,8 @@ img {
     row-gap: 20px;
     width: 250px;
     height: 100vh;
-    background-color: #4D4A8C;
-    color: gray;
+    background-color: #1F2D40;    
+    padding: 1rem;
 }
 
 .sidebar__top {
@@ -294,7 +306,7 @@ img {
     justify-content: space-between;
     align-items: center;
     padding: 15px;
-    background-color: #3a2640;
+    background-color: #1F2D40;
     color: #fff;
     border-bottom: 2px solid #F28241;
     height: 20px;
@@ -306,7 +318,7 @@ img {
     display: flex;
     align-items: center;
     color: gray;
-    background-color:#644373;
+    background-color:#1F2D40;
     border-radius: 3px;
     padding: 5px;
     width: 90%;
@@ -341,7 +353,7 @@ img {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: #3a2640;
+    background-color: #1F2D40;
     color: gray;
 }
 
@@ -362,7 +374,7 @@ img {
     display: flex;
     padding: 5px;
     align-items: center;
-    background-color: #644373;
+    background-color: #1F2D40;
     color: gray;
     cursor: pointer;
 }
@@ -401,7 +413,7 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #644373;
+    background-color: #1F2D40;
     padding-left: 10px;
 }
 
@@ -437,7 +449,7 @@ img {
 .chat {
     display: flex;
     flex-direction: column;
-    background-color: #1F2D40;
+    background-color: #17212F;
     height: 100vh;
     flex: 1;
 }
@@ -447,15 +459,24 @@ img {
     justify-content: space-between;
     align-items: center;
     color: grey;
-    height: 50px;
+    height: 70px;
     border-bottom: 2px solid #F28241;
 }
 
 .chatHeader__left {
     display: flex;
+    flex-direction: row;
     align-items: center;
+    justify-content: center;
     color: #fff;
-    font-size: 12px;
+    font-size: 16px;
+    margin-left: 20px;
+}
+
+#logo_usuario{
+    background-color: #4189a1;
+    padding: 5px;    
+    top: 0;
 }
 
 .chatHeader__Dm {

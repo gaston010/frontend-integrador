@@ -33,11 +33,13 @@ const id_user = localStorage.getItem("userId");
 
 //manejo de logo usuario
 const logo_usuario = document.getElementById("logo_usuario");
+const nombre_usuario = document.getElementById("nombre_usuario_activo");
 
 const dato_logo = localStorage.getItem("userAvatar");
-console.log(dato_logo);
-logo_usuario.src = dato_logo
+const nick = localStorage.getItem("userNick");
 
+logo_usuario.src = dato_logo
+nombre_usuario.innerHTML = nick
 
 
 
@@ -413,7 +415,14 @@ function obtenerMensajes(canal_id, server_id) {
 
   fetch(`https://api-2-svwb.onrender.com/api/message/${canal_id}`)
     .then((response) => {
+      console.log("DATOS OBTENIDOS AL PEDIR MENSAJES")
+      console.log(response)
       if (!response.ok) {
+        /**esta seccion antes del error se debio hacer
+         * porque el backend lanza error si la respuesta es vacia
+         */
+        ocultarSpinnerFormServer()
+        input.disabled = false;
         throw new Error("No se pudo obtener la lista de mensajes");
       }
       ocultarSpinnerFormServer()
