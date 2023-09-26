@@ -219,7 +219,8 @@ function obtenerServidores() {
   const listadoDeServidores = [];
   mostrarSpinner();
 
-  fetch(`https://api-2-svwb.onrender.com/api/server/user/${id_user}`)
+  //fetch(`https://api-2-svwb.onrender.com/api/server/user/${id_user}`)
+  fetch(`https://api-2-svwb.onrender.com/api/server/user/${id_user}/list`)
     .then((response) => {
       if (!response.ok) {
         throw new Error("No se pudo obtener la lista de servidores");
@@ -227,18 +228,18 @@ function obtenerServidores() {
       return response.json();
     })
     .then((data) => {
-      //llenarServidores(data);
-      
-      for (const servidor of data) {        
+      //llenarServidores(data);      
+      for (const servidor of data) {                
         console.log(servidor)
-        listadoDeServidores.push({
-          servidor_id: servidor.Servidor.servidor_id,
+        listadoDeServidores.push({          
+          servidor_id: servidor.server_id,
           icono: "video-juegos.png",
-          nombre: servidor.Servidor.nombre_servidor,
+          nombre: servidor.server_name,
           count: 10,
         });
       }
       ocultarSpinner();
+      console.log(listadoDeServidores)
       renderizarServidores(listadoDeServidores);
       return listadoDeServidores;
     })
@@ -390,9 +391,7 @@ function renderizarCanales(canales, server_id) {
 /**Inicio manejo de mensajes */
 
 //agreguemos accion al boton de reload de mensajes
-btn_reload_messages.addEventListener("click", () => {
-  console.log("haciendo click en reload")
-  console.log({canal_actual, servidor_actual})
+btn_reload_messages.addEventListener("click", () => {  
   obtenerMensajes(canal_actual, servidor_actual)
 })
 
@@ -413,9 +412,7 @@ function obtenerMensajes(canal_id, server_id) {
   const mensajes = [];
 
   fetch(`https://api-2-svwb.onrender.com/api/message/${canal_id}`)
-    .then((response) => {
-      console.log("DATOS OBTENIDOS AL PEDIR MENSAJES")
-      console.log(response)
+    .then((response) => {      
       if (!response.ok) {
         /**esta seccion antes del error se debio hacer
          * porque el backend lanza error si la respuesta es vacia
@@ -519,7 +516,7 @@ function sendMessage(e) {
       "mensajes": input.value,
       "servidor_id": servidor_en_uso,
       "canal_id": canal_en_uso,
-      "autor_id": 3
+      "autor_id": +id_user
      }
 
      //armemos los datos de request
