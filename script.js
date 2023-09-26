@@ -88,8 +88,8 @@ form_crear_servidor.addEventListener("submit", (e) => {
 
   //manejo de peticion http post
   const data_server = {    
-      "nombre_servidor": document.getElementById("nombre").value,
-      "descripcion": document.getElementById("descrip").value,
+      "nombre_servidor": document.getElementById("nombre_s").value,
+      "descripcion": document.getElementById("descrip_s").value,
       "autor_id": +id_user  
   }
 
@@ -101,6 +101,7 @@ form_crear_servidor.addEventListener("submit", (e) => {
    }
 
    mostrarSpinnerFormServer();
+   
 
   // fetch que crea el mensaje en la base de datos
   fetch(`https://api-2-svwb.onrender.com/api/server/add`, requestOptions)
@@ -108,12 +109,10 @@ form_crear_servidor.addEventListener("submit", (e) => {
       if (!response.ok) {
         throw new Error("Error al crear el nuevo servidor");
       }
-      
+      modal_crear_servidor.style.display = "none";
       return response.json();
     })
     .then((data) => {        
-      
-      console.log(data)      
       ocultarSpinnerFormServer();      
       obtenerServidores()
       return;
@@ -174,7 +173,7 @@ form_crear_canal.addEventListener("submit", (e) => {
       if (!response.ok) {
         throw new Error("Error al crear el nuevo Canal");
       }
-      
+      modal_crear_canal.style.display = "none";
       return response.json();
     })
     .then((data) => {        
