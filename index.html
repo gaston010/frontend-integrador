@@ -4,24 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, 
 initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
     <title>Login</title>
 </head>
+<body>
+<h1 id="titulo">Login</h1>
+<form id="loginForm">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+    <br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    <br>
+    <button id="loginButton">Login</button>
 
-    <h1 id="titulo">Login</h1>
-    <form id="loginForm">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <br>
-        <button id="loginButton" >Login</button>
-        
-    </form>
-    <div id="message"></div>
+</form>
+<div id="message"></div>
 
-    <script src="./login.js"></script>
-  
+<script src="./login.js"></script>
+
 </body>
 </html>
