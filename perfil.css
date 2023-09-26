@@ -109,6 +109,17 @@ button:hover {
     border-bottom: 1px solid #a8a8a8;
 }
 
+.login-register {
+    font-size: 10px;
+    color:aliceblue;
+    text-decoration: none !important;
+}
+
+.register-link {
+    font-size: 10px;
+    color:rgb(25, 25, 179);
+    text-decoration: none !important;  
+}
 .Celectronico, .Nname, .Nusuario, .fname, .lname, .Contraseña, .fnacimiento {
     width: auto;
     padding:10px;
