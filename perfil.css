@@ -2,10 +2,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
+    }
 
 body {
-    background-image: url('fondo.jpg');
+    background-image: url('assets/fondo.jpg');
     background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
     justify-items: center;
     align-items: center;
@@ -17,17 +17,16 @@ body {
     padding-top: 50px;
     /* background-image:"assets/discordia2.jpg";
     background-size:cover ; */
-    text-align: center;
-    padding: 20px;
+    text-align: center ;
+    padding: 20 px;
 }
 
 .title {
     font: size 20px;
 
 }
-
 #titulo {
-    color: aliceblue;
+color: aliceblue;
 }
 
 
@@ -43,15 +42,13 @@ body {
     max-width: 300px; /* Limitamos el ancho del formulario */
     margin: 0 auto; /* Centramos el formulario en la página */
     font: size 20px;
-    color: aliceblue;
+    color:aliceblue;
 }
-
 .forgetpass {
     font-size: 10px;
-    color: aliceblue;
+    color:aliceblue;
     text-decoration: none !important;
 }
-
 label {
     margin-top: 10px;
 }
@@ -69,27 +66,25 @@ input, button {
     border-right-style: none;
     border-bottom: 1px solid #a8a8a8;
 }
-
 button {
-    cursor: pointer;
-    background-color: #61677A;
-    padding: 10px 30px;
-    color: #f0f8ff;
-    border-radius: .7em;
+cursor: pointer;
+background-color: #61677A;
+padding: 10px 30px;
+color: #f0f8ff;
+border-radius: .7em;
 }
-
 button:hover {
-    background-color: #d9805f
+    background-color:#d9805f
 
 }
 
-#registration {
+#registration{
     font: size 20px;
-    color: aliceblue;
+    color:aliceblue;
     padding: 20px;
 }
 
-.Register {
+.Register{
     display: flex;
     position: center;
     margin-top: 50px;
@@ -104,7 +99,7 @@ button:hover {
 
 }
 
-.RegisterForm {
+.RegisterForm{
     width: 100%;
     padding: 5px;
     font-size: 16px;
@@ -116,29 +111,28 @@ button:hover {
 
 .login-register {
     font-size: 10px;
-    color: aliceblue;
+    color:aliceblue;
     text-decoration: none !important;
 }
 
 .register-link {
     font-size: 10px;
-    color: rgb(25, 25, 179);
+    color:rgb(25, 25, 179);
     text-decoration: none !important;
 }
-
 .Celectronico, .Nname, .Nusuario, .fname, .lname, .Contraseña, .fnacimiento {
     width: auto;
-    padding: 10px;
+    padding:10px;
     border: 2px solid #252B48;
     margin-bottom: 10px;
-    color: aliceblue
+    color:aliceblue
 }
 
 #perfil {
     width: 400px;
     margin: auto;
     padding: 20px;
-    background-color: rgb(80, 112, 148);
+    background-color:  rgb(80, 112, 148);
 }
 
 #datos {
@@ -166,12 +160,12 @@ button:hover {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
-}
+    }
 
 button:hover {
-    background-color: #d9805f
+    background-color:#d9805f
 
-}
+    }
 
 #contraseña {
     display: flex;
@@ -189,7 +183,7 @@ button:hover {
 
 #Ccontraseña {
     font-size: large;
-    color: aliceblue;
+    color:aliceblue;
 }
 
 
@@ -199,7 +193,7 @@ button:hover {
 }
 
 .popup-crear-servidor {
-    background-image: url('fondo.jpg');
+    background-image: url('assets/fondo.jpg');
     background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
     display: flex;
     flex-direction: column;
@@ -211,10 +205,9 @@ button:hover {
     border-radius: 5px;
     font-size: 16px;
 }
-
 #title {
     font: size 20px;
-    color: aliceblue
+    color:aliceblue
 }
 
 #confirmar, #cancelar {
@@ -225,18 +218,16 @@ button:hover {
     color: #f0f8ff;
     border-radius: .7em;
 }
-
 #button:hover {
-    background-color: #d9805f
-}
+    background-color:#d9805f
+    }
 
 .popup-unirse-servidor {
-    background-image: url('fondo.jpg');
+    background-image: url('assets/fondo.jpg');
     background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
     border-radius: 10px;
     font-size: 18px;
 }
-
 #confirm-button, #cancel-button {
     background-color: #61677A;
     display: flex;
@@ -244,4 +235,4 @@ button:hover {
     margin-top: 20px;;
     color: #f0f8ff;
     border-radius: .7em;
-}
+    }

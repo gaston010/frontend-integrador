@@ -8,18 +8,21 @@ initial-scale=1.0">
     <title>Login</title>
 </head>
 <body>
-<h1 id="titulo">Login</h1>
 <form id="loginForm">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" required>
-    <br>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required>
-    <br>
-    <button id="loginButton">Login</button>
+    <h1 id="titulo">Login</h1>
+    <label id="email" for="username">Email:</label>
+    <input type="text" id="username" name="username" required placeholder="Ingresa tu email">
+    <label id="pass" for="password">Password:</label>
+    <input type="password" id="password" name="password" required placeholder="Ingresa tu password">
+    <button type="submit">Login</button>
+    <div>
+        <a class="forgetpass" href=pass>¿Olvidaste la contraseña?</a>
+    </div>
 
+    <div class="login-register">
+        <p>No tienes una cuenta? <a href="register.html" class="register-link">Registrate</a></p>
+    </div>
 </form>
-<div id="message"></div>
 
 <script src="./login.js"></script>
 
