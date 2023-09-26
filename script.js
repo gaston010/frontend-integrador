@@ -54,16 +54,20 @@ const nombre_usuario = document.getElementById("nombre_usuario_activo");
 const dato_logo = localStorage.getItem("userAvatar");
 const nick = localStorage.getItem("userNick");
 
+
 logo_usuario.src = dato_logo;
 nombre_usuario.innerHTML = nick;
+
 
 // form.addEventListener("submit", sendMessage)
 var servidor_en_uso = 0;
 var canal_en_uso = 0;
 // //agreguemos accion al boton de logo discordia
 logo_btn.addEventListener("click", () => {
+
   menuSinCanales.style.display = "block";
   menuCanales.style.display = "none";
+
 });
 
 
@@ -72,6 +76,7 @@ logo_btn.addEventListener("click", () => {
 
 //agreguemos evento al boton de crear servidor
 btn_crear_servidor.addEventListener("click", () => {
+
   modal_crear_servidor.style.display = "block";
 });
 //agreguemos evento al boton de cancelar crear servidor
@@ -79,16 +84,21 @@ boton_cancelar_crear_servidor.addEventListener("click", (e) => {
   e.preventDefault();
   limpiarFormularioNewServer();
   modal_crear_servidor.style.display = "none";
+
+
 });
 
 //manejo de spinner
 //spinner_form_server = document.getElementById("spinner-servidor");
 function mostrarSpinnerFormServer() {
+
   spinner_form_server.style.display = "flex";
 }
 
 function ocultarSpinnerFormServer() {
   spinner_form_server.style.display = "none";
+
+
 }
 
 //funcion que limpia el formulario de crea un nuevo servidor
@@ -101,6 +111,7 @@ function limpiarFormularioNewServer(){
 
 //evento submit del formulario de crear servidor
 form_crear_servidor.addEventListener("submit", (e) => {
+
   e.preventDefault();
 
   //manejo de peticion http post
@@ -137,12 +148,14 @@ form_crear_servidor.addEventListener("submit", (e) => {
     .catch((error) => {
       console.error("Error al postear nuevo servidor", error);
     });
+
 });
 
 /* Inicio Manejo de Creacion  Canales */
 
 //agreguemos evento al boton de crear Canal
 btn_crear_canal.addEventListener("click", () => {
+
   modal_crear_canal.style.display = "block";
 });
 //agreguemos evento al boton de cancelar crear nuevo canal
@@ -163,6 +176,7 @@ function limpiarFormularioNewChannel(){
 //manejo de spinner
 function mostrarSpinnerFormCanal() {
   spinner_form_server.style.display = "flex";
+
 }
 
 function ocultarSpinnerFormCanal() {
@@ -171,6 +185,7 @@ function ocultarSpinnerFormCanal() {
 
 //evento submit del formulario de crear servidor
 form_crear_canal.addEventListener("submit", (e) => {
+
   e.preventDefault();
 
   //manejo de peticion http post
@@ -220,15 +235,18 @@ function limpiarServidoresAnteriores() {
 function mostrarSpinner() {
   spinner = document.querySelector(".spinner-container");
   spinner.style.display = "flex";
+
+    
 }
 
 function ocultarSpinner() {
-  spinner = document.querySelector(".spinner-container");
-  spinner.style.display = "none";
+    spinner = document.querySelector(".spinner-container");
+    spinner.style.display = "none";
 }
 
 //Trabajemos con la carga del aside de los servidores
 function obtenerServidores() {
+
   const listadoDeServidores = [];
   mostrarSpinner();
 
@@ -277,24 +295,26 @@ function renderizarServidores(servidores) {
       obtenerCanalesbyDB(+servidor_id);
     });
 
-    // Crear el elemento de icono
-    const iconoElemento = document.createElement("img");
-    iconoElemento.src = "assets/" + icono;
-    iconoElemento.alt = nombre;
-    iconoElemento.classList.add("icono");
-    servidorElemento.appendChild(iconoElemento);
 
-    // Crear el elemento de nombre del servidor
-    const nombreElemento = document.createElement("span");
-    nombreElemento.textContent = nombre;
-    nombreElemento.classList.add("nombre");
-    servidorElemento.appendChild(nombreElemento);
+        // Crear el elemento de icono
+        const iconoElemento = document.createElement("img");
+        iconoElemento.src = "assets/" + icono;
+        iconoElemento.alt = nombre;
+        iconoElemento.classList.add("icono");
+        servidorElemento.appendChild(iconoElemento);
 
-    serversList.appendChild(servidorElemento);
-  }
+        // Crear el elemento de nombre del servidor
+        const nombreElemento = document.createElement("span");
+        nombreElemento.textContent = nombre;
+        nombreElemento.classList.add("nombre");
+        servidorElemento.appendChild(nombreElemento);
+
+        serversList.appendChild(servidorElemento);
+    }
 }
 
 /** Finalizo manejo de servidores */
+
 
 /**Inicio Manejo de Canales */
 function obtenerCanalesbyDB(server_id) {
@@ -315,36 +335,29 @@ function obtenerCanalesbyDB(server_id) {
           nombre: canal.name_channel,
           id_canal: canal.id_channel,
         });
-      }
-      //ocultarSpinner();
-      renderizarCanales(canalesList2, server_id);
-      return canalesList2;
-    })
-    .catch((error) => {
-      console.error("Error al obtener los Canales:", error);
-    });
 }
 
 const canalesList = document.getElementById("canalesList");
 
 //limpiar el aside de canales antes de recargar
 function limpiarCanalesAnteriores() {
-  while (canalesList.firstChild) {
-    canalesList.removeChild(canalesList.firstChild);
-  }
+    while (canalesList.firstChild) {
+        canalesList.removeChild(canalesList.firstChild);
+    }
 }
 
 function mostrarSpinner() {
-  spinner = document.querySelector(".spinner-container");
-  spinner.style.display = "flex";
+    spinner = document.querySelector(".spinner-container");
+    spinner.style.display = "flex";
 }
 
 function ocultarSpinner() {
-  spinner = document.querySelector(".spinner-container");
-  spinner.style.display = "none";
+    spinner = document.querySelector(".spinner-container");
+    spinner.style.display = "none";
 }
 
 function obtenerCanales() {
+
   return Promise.all(listadoDeCanales);
 }
 
@@ -381,16 +394,20 @@ function renderizarCanales(canales, server_id) {
 
     canalesList.appendChild(canalElemento);
   }
+
 }
 
 /**Finalizo Manejo de Canales */
+
 
 /**Inicio manejo de mensajes */
 
 //agreguemos accion al boton de reload de mensajes
 btn_reload_messages.addEventListener("click", () => {
+
   obtenerMensajes(canal_actual, servidor_actual);
 });
+
 
 const mensajesList = document.querySelector(".chat__messages");
 
@@ -497,6 +514,7 @@ function renderizarMensajes(mensajes) {
     // mensajesList.appendChild(titulo);
     mensajesList.appendChild(mensajeElemento);
   }
+
 }
 
 //funcion que emite mensajes
