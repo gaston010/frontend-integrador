@@ -31,11 +31,14 @@
             />
         </div>
         <div>
-            <img
-                    class="boton-server-admin"
-                    src="assets/buscar-server.png"
-                    alt="buscar-servidor"
-            />
+
+          <img
+            id="boton-buscar-servidor"
+            class="boton-server-admin"
+            src="assets/buscar-server.png"
+            alt="buscar-servidor"
+          />
+
         </div>
     </section>
 </aside>
@@ -228,13 +231,36 @@
         </div>
     </div>
 
-    <!-- componente spinner del modal de crear nuevo servidor -->
-    <div id="spinner-servidor">
+
+      <!-- modal para unirme a un servidor -->
+      <div id="modalUnirse" class="modal">
+        <div class="modal-content">
+          <h2>Unirse a un Servidor</h2>
+          <h3 id="pregunta"></h3>
+          <div class="form-modal-item">
+            <button id="btn-confirmar-unirse" class="modal-button" >Confirmar</button>
+            <button id="btn-cancel-unirse" class="modal-button">
+              Cancelar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- componente spinner del modal de crear nuevo servidor -->
+      <div id="spinner-servidor">
+
+
+
         <div class="spinner"></div>
     </div>
 
-    <!-- cuerpo de despliegue de mensajes -->
-    <div class="chat__messages"></div>
+
+      <!-- cuerpo de despliegue de mensajes -->
+      <div class="chat__messages">
+        
+      </div>
+
+   
 
     <!-- formulario de carga de mensaje nuevo -->
     <div class="chat__input">

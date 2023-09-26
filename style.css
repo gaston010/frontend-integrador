@@ -513,6 +513,44 @@ img {
     overflow: scroll;
 }
 
+#grid-todos-servidores {
+    display: grid;
+    grid-template-columns: repeat(4, 200px);
+    gap: 100px;
+    margin: 100px;/*Espacioentrelasceldas*/    
+    
+}
+
+/* clase que estiliza el elemento imagen de grilla de servidores */
+.img-serv-element{
+    width: 100px;
+    height: 100px;
+    
+}
+
+.serv-item-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;    
+    width: 200px;
+    height: 200px;
+    transition: transform 0.3s ease;
+    -webkit-transition: transform 0.3s ease;
+    -moz-transition: transform 0.3s ease;
+    -ms-transition: transform 0.3s ease;
+    -o-transition: transform 0.3s ease;
+}
+
+.serv-item-content:hover{
+    transform: scale(1.2);
+    /*Escalaelelementoal120%enhover*/cursor: pointer;
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+}
+
 
 .message {
     display: flex;
