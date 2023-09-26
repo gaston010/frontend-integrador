@@ -691,7 +691,7 @@ function renderizarTodosServidores(todos) {
   }
 }
 
-//evento de carga de la pagina
+//evento de carga de la pagina al abrir la aplicacion
 document.addEventListener("DOMContentLoaded", () => {
   menuSinCanales.style.display = "block";
   menuCanales.style.display = "none";
