@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Discordia</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://kit.fontawesome.com/222cea3eed.js"></script>
+  </head>
+  <body>
+    <!-- barra lateral de servidores -->
+    <aside class="servers">
+      <div class="logo">
+        <img src="LOGO DISCORDIA.jpg" alt="Discord" />
+        <!-- <img id="logo_usuario" alt=""> -->
+      </div>
+      <section id="serversList"></section>
+      <!-- componente spinner del servidor -->
+      <div class="spinner-container">
+        <div class="spinner"></div>
+      </div>
+      <!-- subcomponente de barra servidores - actions button -->
+      <section class="serversAdmin">
+        <div>
+          <img
+            id="boton-crear-servidor"
+            class="boton-server-admin"
+            src="assets/crear-server.png"
+            alt="crear-servidor"
+          />
+        </div>
+        <div>
+          <img
+            class="boton-server-admin"
+            src="assets/buscar-server.png"
+            alt="buscar-servidor"
+          />
+        </div>
+      </section>
+    </aside>
+
+    <!-- barra lateral cuando usuario si eligio servidor -->
+    <aside id="conservidor" class="sidebar">
+      <section id="canalesList"></section>
+      <!-- <div class="spinner-container">
+          <div class="spinner"></div>
+        </div> -->
+
+      <div id="opciones-barra-lateral">
+        <div>
+          <button id="nuevo-canal">Crear Nuevo Canal</button>
+        </div>
+
+        <div class="sidebar__profile">
+          <div>
+            <span class="status"></span>
+            <img src="assets/user4.jpg" alt="avatar" />
+          </div>
+          <div class="sidebar__profileInfo">
+            <h3>Gamer</h3>
+            <p>#1234</p>
+          </div>
+          <div class="sidebar__profileIcons">
+            <i class="fas fa-microphone"></i>
+            <i class="fas fa-headset"></i>
+            <i class="fas fa-cog"></i>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- barra lateral cuando usuario no eligio servidor -->
+    <aside id="sinservidor" class="sidebar">
+      <div class="sidebar__top">
+        <input type="text" placeholder="Find or start a conversation" />
+      </div>
+      <div class="sidebar__icon">
+        <i class="fas fa-user-friends fa-lg"></i>
+        <span>Friends</span>
+      </div>
+      <div class="sidebar__icon">
+        <i class="fas fa-compact-disc fa-lg"></i>
+        <span>Nitro</span>
+      </div>
+
+      <div class="sidebar__users">
+        <div class="sidebar__usersHeader">
+          <div class="sidebar__header">
+            <h4>Direct messages</h4>
+          </div>
+          <i class="fas fa-plus sidebar__addUser"></i>
+        </div>
+        <div>
+          <div class="sidebar__user">
+            <div>
+              <span class="status"></span>
+              <img src="assets/user1.jpg" alt="avatar" />
+            </div>
+            <h4>Hacker</h4>
+          </div>
+          <div class="sidebar__user">
+            <div>
+              <span class="status"></span>
+              <img src="assets/user2.jpg" alt="avatar" />
+            </div>
+            <h4>E-Girl</h4>
+          </div>
+          <div class="sidebar__user">
+            <div>
+              <span class="status"></span>
+              <img src="assets/user3.jpg" alt="avatar" />
+            </div>
+            <h4>ManInBlack</h4>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar__profile">
+        <div>
+          <span class="status"></span>
+          <img src="assets/user4.jpg" alt="avatar" />
+        </div>
+        <div class="sidebar__profileInfo">
+          <h3>Gamer</h3>
+          <p>#1234</p>
+        </div>
+        <div class="sidebar__profileIcons">
+          <i class="fas fa-microphone"></i>
+          <i class="fas fa-headset"></i>
+          <i class="fas fa-cog"></i>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Aqui empieza la section de mensajes -->
+    <section id="mensajes-list" class="chat">
+      <div class="mensaje-container">
+        <div class="chatHeader">
+          <div class="chatHeader__left">
+            
+            <img id="logo_usuario" alt="avatar usuario" />
+
+            <h2 id="nombre_usuario_activo">ManInBlack</h2>
+          </div>
+          <div class="chatHeader__right">
+            <i class="fas fa-phone-volume fa-lg"></i>
+            <i class="fas fa-video fa-lg"></i>
+            <i class="fas fa-thumbtack fa-lg"></i>
+            <i class="fas fa-user-plus fa-lg"></i>
+
+            <div class="search">
+              <input type="text" placeholder="search" />
+              <i class="fas fa-search fa-lg"></i>
+            </div>
+            <i class="fas fa-inbox fa-lg"></i>
+            <i class="fas fa-question-circle fa-lg"></i>
+          </div>
+        </div>
+      </div>
+
+       <!-- modal para crear nuevo canal -->
+       <div id="modalNewChannel" class="modal">
+        <div class="modal-content">
+          <h2>Crear Nuevo Canal</h2>
+          <form id="form-crear-canal" class="formModal">
+            <div class="form-modal-item">
+              <label for="nombre">Nombre del Canal:</label>
+              <input
+                class="input-modal"
+                type="text"
+                id="nombre"
+                name="nombre"
+                required
+              />
+            </div>
+            <div class="form-modal-item">
+              <label for="descrip">Descripcion del Canal:</label>
+              <input
+                class="input-modal"
+                type="text"
+                id="descrip"
+                name="descripcion"
+                required
+              />
+            </div>
+            <div class="form-modal-item">
+              <button class="modal-button" type="submit">Guardar</button>
+              <button id="btn-cancel-submit-channel" class="modal-button">
+                Cancelar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- modal para crear nuevo servidor -->
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <h2>Crear un Servidor</h2>
+          <form id="form-crear-servidor" class="formModal">
+            <div class="form-modal-item">
+              <label for="nombre">Nombre del Servidor:</label>
+              <input
+                class="input-modal"
+                type="text"
+                id="nombre"
+                name="nombre"
+                required
+              />
+            </div>
+            <div class="form-modal-item">
+              <label for="descrip">Descripcion del Servidor:</label>
+              <input
+                class="input-modal"
+                type="text"
+                id="descrip"
+                name="descripcion"
+                required
+              />
+            </div>
+            <div class="form-modal-item">
+              <button class="modal-button" type="submit">Guardar</button>
+              <button id="btn-cancel-submit-server" class="modal-button">
+                Cancelar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- componente spinner del modal de crear nuevo servidor -->
+      <div id="spinner-servidor">
+        <div class="spinner"></div>
+      </div>
+
+      <!-- cuerpo de despliegue de mensajes -->
+      <div class="chat__messages"></div>
+
+      <!-- formulario de carga de mensaje nuevo -->
+      <div class="chat__input">
+        <i class="fas fa-plus-circle fa-lg"></i>
+        <form onsubmit="sendMessage(event)">
+          <input
+            class="sendMessage"
+            type="text"
+            placeholder="send message"
+            disabled="true"
+          />
+          <button class="chat__inputButton" type="submit">Send</button>
+        </form>
+        <div class="chat__inputIcons">
+          <i id="boton-reload-messages" class="fas fa-sync-alt" ></i>
+          <i class="fas fa-file-image fa-lg"></i>
+          <i class="fas fa-laugh fa-lg"></i>
+        </div>
+      </div>
+    </section>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
