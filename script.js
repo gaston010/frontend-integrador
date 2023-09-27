@@ -593,20 +593,57 @@ function obtenerTodosLosServidores() {
     });
 }
 
+
+//agreguemos evento a los botones de modal de unirse a servidor
+btn_unirse.addEventListener("click", () => {
+  mostrarSpinnerFormServer()
+
+  //manejo de peticion http post
+const data = {    
+  id_server: +servidor_elegido_id,
+};
+
+console.log(data, id_user)
+
+//armemos los datos de request
+const requestOptions = {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(data),
+};
+
+  fetch(`https://api-2-svwb.onrender.com/api/server/${id_user}/add`, requestOptions)
+  .then((response) => {
+    console.log(response)
+    if (!response.ok) {
+      
+      throw new Error("No se pudo registrar en el servidor seleccionado");
+    }
+    ocultarSpinnerFormServer();
+    obtenerTodosLosServidores();
+    return response.json();
+  })  
+  .catch((error) => {
+    console.error(
+      "Error anotarse en el servidor",
+      error
+    );
+  });
+
+
+});
+//agreguemos evento al boton de cancelar crear servidor
+btn_cancelar_unirse.addEventListener("click", (e) => {    
+  modal_unirse.style.display = "none";
+});
+
 function renderizarTodosServidores(todos) {
   ocultarSpinnerFormServer();
 
   limpiarContenedorPrincipal();
   // const grilla_servidores = document.getElementById("todos-servidores");
 
-  //agreguemos evento a los botones de modal de unirse a servidor
-  btn_unirse.addEventListener("click", () => {
-    console.log({servidor_elegido_nombre, servidor_elegido_id})
-  });
-  //agreguemos evento al boton de cancelar crear servidor
-  btn_cancelar_unirse.addEventListener("click", (e) => {    
-    modal_unirse.style.display = "none";
-  });
+  
 
   for (const servidor of todos) {
     const { nombre, id } = servidor;
@@ -690,6 +727,15 @@ function renderizarTodosServidores(todos) {
     mensajesList.appendChild(servElemento);
   }
 }
+
+//trabajemos con el login, perfil y logout
+const btn_logout = document.getElementById("btn-logout");
+btn_logout.addEventListener("click", (e) => {
+  localStorage.removeItem("userNick");
+  localStorage.removeItem("userId");
+  window.location.href = "index.html";
+  logout();
+});
 
 //evento de carga de la pagina al abrir la aplicacion
 document.addEventListener("DOMContentLoaded", () => {

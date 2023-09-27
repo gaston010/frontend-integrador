@@ -143,18 +143,13 @@
 
             <h2 id="nombre_usuario_activo">ManInBlack</h2>
           </div>
-          <div class="chatHeader__right">
-            <i class="fas fa-phone-volume fa-lg"></i>
-            <i class="fas fa-video fa-lg"></i>
-            <i class="fas fa-thumbtack fa-lg"></i>
-            <i class="fas fa-user-plus fa-lg"></i>
-
+          <div class="chatHeader__right">            
             <div class="search">
               <input type="text" placeholder="search" />
               <i class="fas fa-search fa-lg"></i>
             </div>
-            <i class="fas fa-inbox fa-lg"></i>
-            <i class="fas fa-question-circle fa-lg"></i>
+            <i id="btn-logout" class="fas fa-sign-out-alt" fa-lg></i>
+            
           </div>
         </div>
       </div>
@@ -260,15 +255,14 @@
           <input
             class="sendMessage"
             type="text"
-            placeholder="send message"
+            placeholder="escriba un mensaje"
             disabled="true"
           />
           <button class="chat__inputButton" type="submit">Send</button>
         </form>
         <div class="chat__inputIcons">
           <i id="boton-reload-messages" class="fas fa-sync-alt" ></i>
-          <i class="fas fa-file-image fa-lg"></i>
-          <i class="fas fa-laugh fa-lg"></i>
+          
         </div>
       </div>
     </section>
