@@ -53,19 +53,31 @@ color: aliceblue;
     }
 }
 
+#loginButton{
+    cursor: pointer;
+    background-color: #7255D8;    
+    padding: 10px 30px;
+    color: #f0f8ff;
+    border-radius: .7em;
+}
+
 /* Agregamos estilos CSS en línea para modificar el formulario */
 #loginForm {
-    display: flex;
+    display: flex;    
     flex-direction: column;
     align-items: center;
-    padding: 20px; /* Agregamos espacio en los lados */
-    background-color: rgb(80, 112, 148);
+    padding: 50px; /* Agregamos espacio en los lados */
+    background-color: rgba(80, 112, 148, 0.1);
     border: 1px solid #ccc;
     border-radius: 5px;
     max-width: 300px; /* Limitamos el ancho del formulario */
     margin: 0 auto; /* Centramos el formulario en la página */
     font: size 20px;
     color:aliceblue;
+}
+
+.login-element{
+    margin: 20px 10px;
 }
 .forgetpass {
     font-size: 10px;
@@ -132,14 +144,14 @@ button:hover {
 }
 
 .login-register {
-    font-size: 10px;
+    font-size: 15px;
     color:aliceblue;
     text-decoration: none !important;
 }
 
 .register-link {
-    font-size: 10px;
-    color:rgb(25, 25, 179);
+    font-size: 15px;
+    color:greenyellow;
     text-decoration: none !important;
 }
 .input-form {
@@ -159,14 +171,54 @@ button:hover {
 #perfil {
     width: 400px;
     margin: auto;
-    padding: 20px;
-    background-color:  rgb(80, 112, 148);
+    padding: 20px;    
 }
 
-#datos {
+.item-form{
+    font-size: 20px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    color: lightsteelblue;
+    margin: 10px auto;
+}
+
+.input-element{
+    padding: 10px 20px;
+    font-size: 17px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+
+.btn-action{
+    background-color: indigo;
+    color: white;
+    font-size: 18px;    
+}
+
+.btn-action:hover{
+    background-color: cadetblue;
+    cursor:pointer
+}
+
+
+.form-edit {
+    padding: 40px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
 }
 
 #imagen {

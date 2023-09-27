@@ -44,6 +44,14 @@ let servidor_actual = 0;
 //capturemos el boton de reload de mensajes
 const btn_reload_messages = document.getElementById("boton-reload-messages");
 
+//capturemos el modal de No puede Editar Mensaje
+const modal_negado_editar_mensaje = document.getElementById("modal-negado-editar-mensaje");
+const btn_negado_editar_mensaje = document.getElementById("btn-negado-editar-mensaje");
+//le agrego el evento al boton de aceptar en el modal de negado editar mensaje
+btn_negado_editar_mensaje.addEventListener("click", () => {
+  modal_negado_editar_mensaje.style.display = "none";
+})
+
 //manejo de datos del usuario
 const id_user = localStorage.getItem("userId");
 
@@ -448,6 +456,8 @@ function renderizarMensajes(mensajes) {
   limpiarMensajesAnteriores();
   mensajes = mensajes.reverse();
   for (const item of mensajes) {
+    console.log("elemento mensaje>>>>>>>>")
+    console.log(item)
     const { autor, mensaje, fecha } = item;
 
     const mensajeElemento = document.createElement("div");
@@ -478,19 +488,39 @@ function renderizarMensajes(mensajes) {
     fechaElemento.innerHTML = fecha_aux;
     //tituloElemento.appendChild(fechaElemento);
     infoElemento.appendChild(tituloElemento);
-    infoElemento.appendChild(fechaElemento);
+    infoElemento.appendChild(fechaElemento);  
+
+    //voy a crear el boton de edicion de mensaje
+    const btn_edit_message = document.createElement("i");
+    btn_edit_message.classList.add("fas", "fa-pen");
+    btn_edit_message.style.marginLeft = "10px";
+    btn_edit_message.id = "btn-edit-message";
+
+    btn_edit_message.onclick = () => {
+      console.log({nick, autor})
+      if (nick != autor){
+        modal_negado_editar_mensaje.style.display = "block";
+      }
+    };
+
+    
+    
     //aqui se podria agregar un salto de linea
     mensajeElemento.appendChild(infoElemento);
-
+    
+    
     const cuerpoMensaje = document.createElement("div");
     cuerpoMensaje.classList.add("message__body");
     const textoMensaje = document.createElement("p");
     textoMensaje.innerHTML = mensaje;
     cuerpoMensaje.appendChild(imagenElemento);
     cuerpoMensaje.appendChild(textoMensaje);
+    
+    cuerpoMensaje.appendChild(btn_edit_message);
 
     //infoElemento.appendChild(cuerpoMensaje);
     mensajeElemento.appendChild(cuerpoMensaje);
+
 
     // const titulo = document.createElement("h1");
     // titulo.innerHTML = "PRUEBA";
@@ -737,6 +767,11 @@ btn_logout.addEventListener("click", (e) => {
   localStorage.removeItem("userId");
   window.location.href = "index.html";
   logout();
+});
+
+const btn_edit_user = document.getElementById("btn-editar-usuario");
+btn_edit_user.addEventListener("click", (e) => {  
+  window.location.href = "./perfil.html";
 });
 
 

@@ -1,63 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="perfil.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="perfil.css" />
     <title>Perfil</title>
-</head>
-<body>
-<h1 id="titulo">Profile</h1>
-<div id="perfil">
-    <div id="datos">
-        <img src="/assets/perfil1.png" alt="Imagen de perfil">
-        <div class="nombre_usuario">
-            <label for="nombre_usuario">Nombre de usuario:</label>
-            <input type="text" id="nombre_usuario" value="usuario">
+  </head>
+  <body>
+    <h1 id="titulo">Profile</h1>
+    <div id="perfil">
+      <form id="form-edit-user" class="form-edit">
+        <img src="/assets/perfil1.png" alt="Imagen de perfil" />
+        <div class="item-form">
+          <label for="nombre_usuario">Nombre de usuario:</label>
+          <input class="input-element" type="text" id="nombre_usuario" />
         </div>
-        <div class="nick">
-            <label for="nick">Nick:</label>
-            <input type="text" id="nick" value="nick">
+        <div class="item-form">
+          <label for="nick">Nick:</label>
+          <input class="input-element" type="text" id="nick" />
         </div>
-        <div class="nombre">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" value="nombre">
+        <!-- <div class="item-form">
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" />
         </div>
-        <div class="apellido">
-            <label for="apellido">Apellido:</label>
-            <input type="text" id="apellido" value="apellido">
+        <div class="item-form">
+          <label for="apellido">Apellido:</label>
+          <input type="text" id="apellido" />
+        </div> -->
+        <div class="item-form">
+          <label for="email">Email:</label>
+          <input class="input-element" type="email" id="email" />
         </div>
-        <div class="email">
-            <label for="email">Email:</label>
-            <input type="email" id="email" value="correo@ejemplo.com">
+        <div id="botones">
+          <button type="submit" class="btn-action" id="guardar-btn">Guardar</button>
+          <button class="btn-action" id="cancelar-btn">
+              Cancelar
+          </button>
         </div>
+      </form>
+      
     </div>
-    <div id="botones">
-        <button id="editar">Editar</button>
-        <button id="guardar">Guardar</button>
-        <div id="cambiar contraseña">
-            <button id="btn-show">Cambiar Contraseña</button>
-            <div id="popup" class="popup" style="display: none;">
 
-
-                <!--h1>Cambiar Contraseña</h1>
-                <p>Este es el contenido de la ventana emergente.</p>
-                <button id="btn-close">Cerrar ventana emergente</button>
-                <-- </div>
-                    <div id="contraseña">
-                    <label for="contraseña">Contraseña actual:</label>
-                    <input type="password" id="contraseña_actual">
-                    <label for="nueva_contraseña">Nueva contraseña:</label>
-                    <input type="password" id="nueva_contraseña">
-                    <label for="confirmar_contraseña">Confirmar contraseña:</label>
-                    <input type="password" id="confirmar_contraseña">
-                    <button id="cambiar">Cambiar contraseña</button>
-                    </div> -->
-            </div>
-        </div>
-    </div>
-</div>
-
-
-</body>
+  <script src="./perfil.js"></script>
+  </body>
 </html>

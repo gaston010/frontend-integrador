@@ -144,11 +144,12 @@
             <h2 id="nombre_usuario_activo">ManInBlack</h2>
           </div>
           <div class="chatHeader__right">            
-            <div class="search">
+            <!-- <div class="search">
               <input type="text" placeholder="search" />
               <i class="fas fa-search fa-lg"></i>
-            </div>
-            <i id="btn-logout" class="fas fa-sign-out-alt" fa-lg></i>
+            </div> -->
+            <i id="btn-editar-usuario" class="btn-action fas fa-user-edit"></i>
+            <i id="btn-logout" class="btn-action fas fa-sign-out-alt"></i>            
             
           </div>
         </div>
@@ -234,6 +235,17 @@
             <button id="btn-cancel-unirse" class="modal-button">
               Cancelar
             </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- modal edicion de mensaje -->
+      <div id="modal-negado-editar-mensaje" class="modal">
+        <div class="modal-content">
+          <h2>Edicion de Mensaje</h2>
+          <h3> Solo puede editar sus Mensajes</h3>
+          <div class="form-modal-item">
+            <button id="btn-negado-editar-mensaje" class="modal-button" >Confirmar</button>          
           </div>
         </div>
       </div>

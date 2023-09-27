@@ -126,15 +126,16 @@ img {
     width: 100px;
 }
 
-#btn-logout{
+.btn-action{
     color: yellow;
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     font-size: 30px; 
     line-height: 50px;    
+    margin: 2px 10px;
 }
 
-#btn-logout:hover{
+.btn-action:hover{
     cursor: pointer;
 }
 
@@ -275,12 +276,17 @@ img {
     justify-content: space-between;
 }
 
+#btn-edit-message:hover{
+    color: #F28241;
+    cursor: pointer;
+}
+
 #boton-reload-messages{
     font-size: 25px;
     pointer-events: none;
 }
 
-#bomyModalton-reload-messages:hover{
+#boton-reload-messages:hover{
     cursor: pointer;
 }
 
