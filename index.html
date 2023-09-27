@@ -4,24 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, 
 initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
     <title>Login</title>
 </head>
-
+<body>
+<form id="loginForm">
     <h1 id="titulo">Login</h1>
-    <form id="loginForm">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <br>
-        <button id="loginButton" >Login</button>
-        
-    </form>
-    <div id="message"></div>
+    <label id="email" for="username">Email:</label>
+    <input type="text" id="username" name="username" required placeholder="Ingresa tu email">
+    <label id="pass" for="password">Password:</label>
+    <input type="password" id="password" name="password" required placeholder="Ingresa tu password">
+    <button id="loginButton">Login</button>
+    <div>
+        <a class="forgetpass" href=pass>¿Olvidaste la contraseña?</a>
+    </div>
 
-    <script src="./login.js"></script>
-  
+    <div class="login-register">
+        <p>No tienes una cuenta? <a href="register.html" class="register-link">Registrate</a></p>
+    </div>
+</form>
+
+<script src="./login.js"></script>
+
 </body>
 </html>
