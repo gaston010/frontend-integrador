@@ -143,18 +143,14 @@
 
             <h2 id="nombre_usuario_activo">ManInBlack</h2>
           </div>
-          <div class="chatHeader__right">
-            <i class="fas fa-phone-volume fa-lg"></i>
-            <i class="fas fa-video fa-lg"></i>
-            <i class="fas fa-thumbtack fa-lg"></i>
-            <i class="fas fa-user-plus fa-lg"></i>
-
-            <div class="search">
+          <div class="chatHeader__right">            
+            <!-- <div class="search">
               <input type="text" placeholder="search" />
               <i class="fas fa-search fa-lg"></i>
-            </div>
-            <i class="fas fa-inbox fa-lg"></i>
-            <i class="fas fa-question-circle fa-lg"></i>
+            </div> -->
+            <i id="btn-editar-usuario" class="btn-action fas fa-user-edit"></i>
+            <i id="btn-logout" class="btn-action fas fa-sign-out-alt"></i>            
+            
           </div>
         </div>
       </div>
@@ -243,6 +239,17 @@
         </div>
       </div>
 
+      <!-- modal edicion de mensaje -->
+      <div id="modal-negado-editar-mensaje" class="modal">
+        <div class="modal-content">
+          <h2>Edicion de Mensaje</h2>
+          <h3> Solo puede editar sus Mensajes</h3>
+          <div class="form-modal-item">
+            <button id="btn-negado-editar-mensaje" class="modal-button" >Confirmar</button>          
+          </div>
+        </div>
+      </div>
+
       <!-- componente spinner del modal de crear nuevo servidor -->
       <div id="spinner-servidor">
         <div class="spinner"></div>
@@ -260,15 +267,14 @@
           <input
             class="sendMessage"
             type="text"
-            placeholder="send message"
+            placeholder="escriba un mensaje"
             disabled="true"
           />
           <button class="chat__inputButton" type="submit">Send</button>
         </form>
         <div class="chat__inputIcons">
           <i id="boton-reload-messages" class="fas fa-sync-alt" ></i>
-          <i class="fas fa-file-image fa-lg"></i>
-          <i class="fas fa-laugh fa-lg"></i>
+          
         </div>
       </div>
     </section>

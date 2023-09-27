@@ -2,66 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="perfil.css">
     <title>Register</title>
 </head>
-</body>
-<h1 id="registration">Register</h1>
-</html>
-<form class="Register">
-    <div class="Celectronico">
-        <label for="Celectronico">E-mail</label><br>
-        <input type="text" id="Celetronico" name="Celectronico"><br><br>
-    </div>
-    <div class="Nname">
-        <label for="Nname">Nick</label><br>
-        <input type="text" id="Nname" name="Nname"><br><br>
-    </div>
-    <div class="Nusuario">
-        <label for="Nusuario">User Name</label><br>
-        <input type="text" id="Nusuario" name="Nusuario"><br><br>
-    </div>
-    <div class="fname">
-        <label for="fname">Name</label><br>
-        <input type="text" id="fname" name="fname"><br>
-    </div>
-    <div class="lname">
-        <label for="lname">Last Name</label><br>
-        <input type="text" id="lname" name="lname"><br><br>
-    </div>
-    <div class="Contraseña">
-        <label for="Contraseña">Password</label><br>
-        <input type="text" id="Contraseña" name="Contraseña"><br><br>
-    </div>
-    <div class="Fnacimiento">
-        <label for="Fnacimiento">Date of Birth</label><br>
-        <div class="date-picker">
-            <label>Day</label>
-            <select id="Day">
-            </select>
-            <label>Month</label>
-            <select id="Month">
-                <option value="January">January</option>
-                <option value="February">February/option>
-                <option value="March">March</option>
-                <option value="April">April</option>
-                <option value="May">May</option>
-                <option value="June">June</option>
-                <option value="July">July</option>
-                <option value="August">August</option>
-                <option value="September">September</option>
-                <option value="October">October</option>
-                <option value="November">November</option>
-                <option value="December">Decemeber</option>
-            </select>
-            <label>Year</label>
-            <select id="Year">
-            </select>
-        </div>
-        <button type="submit">submit</button>
-</form>
+<body>
+ <h1 id="registration">Register</h1>
+<div class="spinner-register">
+    <div class="spinner"></div>
+  </div>
 
+<form id="form-register-user" class="Register">
+    <div class="input-form">
+        <label for="Celectronico">E-mail</label><br>
+        <input placeholder="ingrese su email" class="input-value" type="text" id="Celectronico" name="Celectronico"><br><br>
+    </div>
+    <div class="input-form">
+        <label for="Nickname">Nick</label><br>
+        <input placeholder="ingrese su nick name" class="input-value" type="text" id="Nickname" name="Nname"><br><br>
+    </div>
+    <div class="input-form">
+        <label for="Nusuario">Nombre</label><br>
+        <input placeholder="ingrese su nombre" class="input-value" type="text" id="Nusuario" name="Nusuario"><br><br>
+    </div>    
+    <div class="input-form">
+        <label for="pass">Password</label><br>
+        <input placeholder="ingrese su contraseña" class="input-value" type="text" id="pass" name="Contraseña"><br><br>
+    </div>
+    
+        <button id="btn-submit" type="submit">Enviar</button>
+</form>
+<!-- componente spinner del servidor -->
+
+
+
+<script src="./register.js"></script>
+</body>
 </html>
 
 

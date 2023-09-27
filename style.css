@@ -126,6 +126,19 @@ img {
     width: 100px;
 }
 
+.btn-action{
+    color: yellow;
+    width: 30px;
+    height: 30px;
+    font-size: 30px; 
+    line-height: 50px;    
+    margin: 2px 10px;
+}
+
+.btn-action:hover{
+    cursor: pointer;
+}
+
 .logo > img {
     height: 45px;
     width: 50px;
@@ -263,11 +276,17 @@ img {
     justify-content: space-between;
 }
 
+#btn-edit-message:hover{
+    color: #F28241;
+    cursor: pointer;
+}
+
 #boton-reload-messages{
+    font-size: 25px;
     pointer-events: none;
 }
 
-#bomyModalton-reload-messages:hover{
+#boton-reload-messages:hover{
     cursor: pointer;
 }
 

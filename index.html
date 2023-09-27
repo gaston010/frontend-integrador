@@ -4,22 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, 
 initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="perfil.css">
     <title>Login</title>
 </head>
 <body>
 <form id="loginForm">
     <h1 id="titulo">Login</h1>
-    <label id="email" for="username">Email:</label>
-    <input type="text" id="username" name="username" required placeholder="Ingresa tu email">
-    <label id="pass" for="password">Password:</label>
-    <input type="password" id="password" name="password" required placeholder="Ingresa tu password">
-    <button id="loginButton">Login</button>
-    <div>
-        <a class="forgetpass" href=pass>¿Olvidaste la contraseña?</a>
+    <div class="login-element">
+        <label id="email" for="username">Email:</label>
+        <input type="text" id="username" name="username" required placeholder="Ingresa tu email">
     </div>
+    <div class="login-element">
+        <label id="pass" for="password">Password:</label>
+        <input type="password" id="password" name="password" required placeholder="Ingresa tu password">
+    </div>
+    <div class="login-element"><button id="loginButton">Login</button></div>    
 
-    <div class="login-register">
+    <div class="login-element login-register">
+        <a class="forgetpass" href=pass>¿Olvidaste la contraseña?</a>
         <p>No tienes una cuenta? <a href="register.html" class="register-link">Registrate</a></p>
     </div>
 </form>
