@@ -4,6 +4,16 @@
 //veamos el register
 const form_register_user = document.getElementById("form-register-user");
 
+function mostrarSpinner() {
+    spinner = document.querySelector(".spinner-register");
+    spinner.style.display = "flex";
+  }
+  
+  function ocultarSpinner() {
+    spinner = document.querySelector(".spinner-register");
+    spinner.style.display = "none";
+  }
+
 form_register_user.addEventListener("submit", (e) => {  
   e.preventDefault();
   const email_input = document.getElementById("Celectronico");
@@ -25,6 +35,8 @@ form_register_user.addEventListener("submit", (e) => {
     body: JSON.stringify(data)
 }
 
+mostrarSpinner()
+
 fetch(`https://api-2-svwb.onrender.com/api/user/add`, requestOptions)
     .then((response) => {
         if (!response.ok) {
@@ -41,6 +53,7 @@ fetch(`https://api-2-svwb.onrender.com/api/user/add`, requestOptions)
         localStorage.setItem("userId", iduser);
         localStorage.setItem("userNick", nickuser);
         localStorage.setItem("userAvatar", "");
+        ocultarSpinner()
 
         window.location.href = `app.html`;
 
