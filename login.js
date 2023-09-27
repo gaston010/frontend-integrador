@@ -29,9 +29,7 @@ loginButton.addEventListener("click", (e) => {
 
             return response.json();
         })
-        .then((data) => {
-            console.log(">>>>>>>>>>")
-            console.log(data)
+        .then((data) => {            
             iduser = data.user_id
             nickuser = data.Nick
             avataruser = data.Avatar

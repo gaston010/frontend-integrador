@@ -728,7 +728,9 @@ function renderizarTodosServidores(todos) {
   }
 }
 
-//trabajemos con el login, perfil y logout
+/*trabajemos con el login, perfil y logout*/
+
+
 const btn_logout = document.getElementById("btn-logout");
 btn_logout.addEventListener("click", (e) => {
   localStorage.removeItem("userNick");
@@ -736,6 +738,8 @@ btn_logout.addEventListener("click", (e) => {
   window.location.href = "index.html";
   logout();
 });
+
+
 
 //evento de carga de la pagina al abrir la aplicacion
 document.addEventListener("DOMContentLoaded", () => {
