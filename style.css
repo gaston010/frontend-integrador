@@ -12,8 +12,8 @@ body {
     overflow: hidden;
     background-color: #445069;
     /* padding-top: 100px; */
-    background-image: url('assets/fondo.jpg');
-    background-size: cover;
+    background-image:"assets/discordia2.jpg";
+    background-size:cover ;
 }
 
 /* body {
@@ -29,16 +29,15 @@ img {
     margin-top: 10px;
 }
 
-#serversList {
+#serversList{
     margin-top: 80px;
-
+    
 }
 
-.nombre {
+.nombre{
     position: absolute;
     /*bottom: -20px;
-    */
-    background-color: #7289da;
+    */background-color: #7289da;
     color: #ffffff;
     padding: 5px;
     border-radius: 5px;
@@ -46,30 +45,31 @@ img {
     font-weight: bold;
     opacity: 0;
     pointer-events: none;
-    transform: translateX(-50%);
-    transition: opacity 0.2s ease-in-out;
-}
+    transform: translateX(-50%);   
+    transition: opacity 0.2s ease-in-out;   
+  }
 
-.canal-logo {
+  .canal-logo{
     display: flex;
     flex-direction: row;
     margin: 10px;
     justify-content: flex-start;
-    align-items: center;
+    align-items: center;    
     border-radius: 10px;
     padding: 10px;
 }
 
-.canal-logo:hover {
+  .canal-logo:hover{
     background-color: #4189a1;
     cursor: pointer;
-}
+  }
 
+  
 
-.icono-canal {
+  .icono-canal{
     height: 30px;
     width: 30px;
-    border-radius: 50%;
+    border-radius: 50%;   
 }
 
 /* #conservidor{
@@ -79,11 +79,11 @@ img {
     justify-content: space-around;    
 } */
 
-#opciones-barra-lateral {
+#opciones-barra-lateral{
     margin-top: 20px;
 }
 
-#nuevo-canal {
+#nuevo-canal{
     width: 100%;
     background-color: chocolate;
     color: white;
@@ -97,21 +97,21 @@ img {
     -o-border-radius: 20px;
 }
 
-
-.nombre-canal {
-    display: flex;
-    align-items: center;
+  
+  .nombre-canal{    
+    display: flex;    
+    align-items: center; 
     justify-content: center;
     color: #ffffff;
     padding: 5px;
     border-radius: 5px;
-
+    
     font-weight: bold;
-    opacity: 1;
+    opacity: 1;    
     margin-left: 1rem;
-}
-
-.server-logo:hover .nombre {
+  }
+  
+  .server-logo:hover .nombre{
     opacity: 1;
 }
 
@@ -120,7 +120,7 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #17212F;
+    background-color:#17212F;
     overflow-y: scroll;
     height: 100vh;
     width: 100px;
@@ -156,7 +156,7 @@ img {
 }
 
 .server-logo {
-    position: relative;
+    position: relative;    
 }
 
 .server-logo > img {
@@ -196,7 +196,7 @@ img {
     -o-border-radius: 50%;
 }
 
-.serversAdmin {
+.serversAdmin{
     margin-top: 50px;
 }
 
@@ -208,9 +208,9 @@ img {
     -o-transition: 0.3s ease-in-out;
 }
 
-.boton-server-admin:hover {
+.boton-server-admin:hover{
     cursor: pointer;
-    transform: scale(1.3);
+    transform: scale(1.3);    
     background-color: black;
     transition: 0.3s ease-in-out;
     -webkit-transform: scale(1.3);
@@ -230,44 +230,44 @@ img {
     height: 100vh;
 }
 
-.spinner {
+.spinner{
     border: 4px solid rgba(0, 0, 0, 0.1);
     border-top: 4px solid #3498db;
     border-radius: 50%;
     width: 50px;
     height: 50px;
-    animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;    
 }
 
-#spinner-servidor {
+#spinner-servidor{
     top: 0;
     display: none;
     justify-content: center;
     align-items: center;
-
+    
 }
 
-@keyframes spin {
-    0% {
+@keyframes spin{
+    0%{
         transform: rotate(0deg);
     }
-    100% {
+    100%{
         transform: rotate(360deg);
     }
 }
 
-.message__info {
+.message__info{
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-#boton-reload-messages {
+#boton-reload-messages{
     pointer-events: none;
 }
 
-#bomyModalton-reload-messages:hover {
+#bomyModalton-reload-messages:hover{
     cursor: pointer;
 }
 
@@ -297,7 +297,7 @@ img {
     row-gap: 20px;
     width: 250px;
     height: 100vh;
-    background-color: #1F2D40;
+    background-color: #1F2D40;    
     padding: 1rem;
 }
 
@@ -318,7 +318,7 @@ img {
     display: flex;
     align-items: center;
     color: gray;
-    background-color: #1F2D40;
+    background-color:#1F2D40;
     border-radius: 3px;
     padding: 5px;
     width: 90%;
@@ -473,14 +473,14 @@ img {
     margin-left: 20px;
 }
 
-#logo_usuario {
+#logo_usuario{
     background-color: #4189a1;
-    padding: 5px;
+    padding: 5px;    
     top: 0;
 }
 
 .chatHeader__Dm {
-    color: #F28241;
+    color:#F28241;
     font-size: 20px;
     padding: 10px;
 }
@@ -552,22 +552,23 @@ img {
 }
 
 
+
 .message {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 10px 40px;
-
+    
     color: #fff;
 }
 
-.message__body {
+.message__body{
     display: flex;
     flex-direction: row;
     justify-content: first baseline;
     align-items: center;
-
-
+    
+    
 }
 
 .message__info {
@@ -673,91 +674,37 @@ img {
         display: none;
     }
 }
-
 /* * {
     margin: 0;
     padding: 0;
     } */
 
 
+
 .title {
     font: size 20px;
 
 }
-
 #titulo {
-    color: aliceblue;
+color: aliceblue;
 }
 
 
 #loginForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background-color: rgb(80, 112, 148);
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    max-width: 300px;
-    font-size: 20px;
-    color: aliceblue;
-    align-self: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    transition: box-shadow 0.3s ease-in-out;
-    margin: 20vh auto auto;
+background-color: rgb(80, 112, 148);
+position: center;
+margin-top: 50px;
+display: flex;
+flex-direction: column;
+justify-items: center;
+align-items: center;
+margin: 30px;
+padding: 30px;
+border-radius: .8em;
+
 }
 
-#loginForm:hover {
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-}
-
-#loginForm input {
-    margin-top: 10px;
-}
-input[type="text"]:focus,
-input[type="password"]:focus {
-    background-color: #f0f0f0;
-    outline: none;
-}
-/* Estilo para los placeholders en los campos de entrada */
-input[type="text"]::placeholder,
-input[type="password"]::placeholder {
-    color: #666; /* Cambia el color del placeholder */
-    font-style: italic; /* Puede agregar estilo adicional */
-}
-
-#email input[type="text"]:focus,
-#pass input[type="password"]:focus {
-    background-color: #f0f0f0;
-    outline: none;
-}
-
-/* Estilo para los placeholders en los campos de entrada */
-#email input[type="text"]::placeholder,
-#pass input[type="password"]::placeholder {
-    color: #666;
-    font-style: italic;
-}
-
-.forgetpass {
-    font-size: 10px;
-    color: #68b0f3;
-    text-decoration: none !important;
-}
-
-.login-register {
-    font-size: 10px;
-    color: aliceblue;
-    text-decoration: none !important;
-}
-
-.login-register a {
-    text-decoration: none;
-    color: #4AA6F4;
-}
-
-#logo_usuario {
+#logo_usuario{
     width: 30px;
     height: 30px;
     margin-right: 10px;
@@ -773,27 +720,23 @@ input[type="password"]::placeholder {
     border-bottom: 1px solid #a8a8a8;
 
 }
-
 button {
-    cursor: pointer;
-    background-color: #61677A;
-    padding: 10px 30px;
-    color: #f0f8ff;
-    border-radius: .7em;
+cursor: pointer;
+background-color: #61677A;
+padding: 10px 30px;
+color: #f0f8ff;
+border-radius: .7em;
 }
-
 button:hover {
-    background-color: #d9805f
+    background-color:#d9805f
 
 }
-
-#registration {
+#registration{
     font: size 20px;
-    color: aliceblue;
+    color:aliceblue;
     padding: 20px;
 }
-
-.RegisterForm {
+.RegisterForm{
     width: 100%;
     padding: 5px;
     font-size: 16px;
@@ -807,7 +750,7 @@ button:hover {
     width: 400px;
     margin: 0 auto;
     padding: 20px;
-    background-color: rgb(80, 112, 148);
+    background-color:  rgb(80, 112, 148);
 }
 
 #datos {
@@ -853,7 +796,7 @@ button:hover {
 
 #Ccontraseña {
     font-size: large;
-    color: aliceblue;
+    color:aliceblue;
 }
 
 /* manejo de modal */
@@ -869,42 +812,42 @@ button:hover {
     left: 0;
     top: 0;
     overflow: auto;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
     -webkit-border-radius: 30px;
     -moz-border-radius: 30px;
     -ms-border-radius: 30px;
     -o-border-radius: 30px;
 }
 
-.modal-content {
+.modal-content{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.modal-button {
+.modal-button{    
     background-color: #4AA6F4;
     color: black;
 }
 
-.formModal {
+.formModal{
     display: flex;
-    flex-direction: column;
+    flex-direction: column;    
     width: 100%;
-
+    
 }
 
-.form-modal-item {
+.form-modal-item{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    width: 100%;
+    width: 100%;    
     margin: 20px auto;
 }
 
-.input-modal {
+.input-modal{
     width: 50%;
 }
