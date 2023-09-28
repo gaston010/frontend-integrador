@@ -32,10 +32,10 @@ Este es un proyecto de clon de la interfaz de usuario de Discord desarrollado co
 3. O puedes usar un enlace alternativo para testeo: [web](https://gaston010.github.io/frontend-integrador/)
 
 ## Contribuciones 
--[Ana Gomez](https://github.com/AnitaGomez2183)
--[Fernando Salva](https://github.com/FSALVA157))
--[Virginia Gutierrez](https://github.com/virginia1612)
--[Gastón](https://github.com/gaston010)
+- [Ana Gomez](https://github.com/AnitaGomez2183)
+- [Fernando Salva](https://github.com/FSALVA157)
+- [Virginia Gutierrez](https://github.com/virginia1612)
+- [Gastón](https://github.com/gaston010)
 
 ## Licencia
 Sólo para uso educativo, todos los derechos reservados.
