@@ -279,6 +279,7 @@ function renderizarServidores(servidores) {
     servidorElemento.style.marginBottom = "20px";
     servidorElemento.addEventListener("click", () => {
       input.disabled = true;
+      limpiarMensajesAnteriores();
       servidor_actual = servidor_id;
       menuSinCanales.style.display = "none";
       menuCanales.style.display = "block";
