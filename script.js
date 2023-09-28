@@ -432,8 +432,9 @@ function obtenerMensajes(canal_id, server_id) {
       return response.json();
     })
     .then((data) => {
-      for (const mensaje of data) {
+      for (const mensaje of data) {        
         mensajes.push({
+          id_autor_mensaje: mensaje.Autor_ID,
           autor: mensaje.Nick,
           mensaje: mensaje.Mensaje,
           fecha: mensaje.Fecha_Creacion,
@@ -456,10 +457,8 @@ function renderizarMensajes(mensajes) {
   limpiarMensajesAnteriores();
   mensajes = mensajes.reverse();
   for (const item of mensajes) {
-    console.log("elemento mensaje>>>>>>>>")
-    console.log(item)
-    const { autor, mensaje, fecha } = item;
-
+    
+    const {id_autor_mensaje, autor, mensaje, fecha } = item;    
     const mensajeElemento = document.createElement("div");
     mensajeElemento.classList.add("message");
     mensajeElemento.style.marginBottom = "20px";
@@ -498,7 +497,7 @@ function renderizarMensajes(mensajes) {
 
     btn_edit_message.onclick = () => {
       console.log({nick, autor})
-      if (nick != autor){
+      if (id_autor_mensaje != id_user){
         modal_negado_editar_mensaje.style.display = "block";
       }
     };
@@ -612,6 +611,7 @@ function obtenerTodosLosServidores() {
           id: servidor.id_servidor,
         });
       }
+      
       renderizarTodosServidores(todos_servidores);
       return todos_servidores;
     })
@@ -632,7 +632,7 @@ btn_unirse.addEventListener("click", () => {
 const data = {    
   id_server: +servidor_elegido_id,
 };
-
+console.log("DATA DE USER ID<<<<<<<<<<<")
 console.log(data, id_user)
 
 //armemos los datos de request
@@ -650,7 +650,8 @@ const requestOptions = {
       throw new Error("No se pudo registrar en el servidor seleccionado");
     }
     ocultarSpinnerFormServer();
-    obtenerTodosLosServidores();
+    obtenerServidores();
+    modal_unirse.style.display = "none";
     return response.json();
   })  
   .catch((error) => {
@@ -679,9 +680,17 @@ function renderizarTodosServidores(todos) {
     const { nombre, id } = servidor;
     servidor_elegido_nombre = nombre;
     servidor_elegido_id = id;
+    
+    console.log("servidor!!")
+    console.log(servidor_elegido_id)
 
+    const id_servidor_e = document.createElement("p");
+    id_servidor_e.innerHTML = servidor_elegido_id;
+    
+    
     const servElemento = document.createElement("div");
-
+    
+    servElemento.appendChild(id_servidor_e);
     // Crear la imagen del servidor
     const imagenServ = document.createElement("img");
 
@@ -743,8 +752,8 @@ function renderizarTodosServidores(todos) {
 
     //agreguemos el evento al logo de servidor
     servElemento.addEventListener("click", () => {      
-      texto_pregunta.innerHTML = `Desea unirse al Servidor ${nombre}?`;
-
+      texto_pregunta.innerHTML = `Desea unirse al Servidor ${nombre} ${id_servidor_e.innerHTML}?`;
+      servidor_elegido_id = +id_servidor_e.innerHTML;
       modal_unirse.style.display = "block";
       // menuSinCanales.style.display = "none"
       // menuCanales.style.display = "block"
