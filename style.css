@@ -282,6 +282,14 @@ img {
     
 }
 
+#spinner-editar-mensaje{
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    
+}
+
 @keyframes spin{
     0%{
         transform: rotate(0deg);
@@ -351,6 +359,11 @@ img {
     color: #fff;
     border-bottom: 2px solid #F28241;
     height: 20px;
+}
+
+.input-modal{
+    padding: 10px 20px;
+    font-size: 20px;
 }
 
 .sidebar__top > input {
@@ -608,8 +621,9 @@ img {
     flex-direction: row;
     justify-content: first baseline;
     align-items: center;
-    
-    
+    font-size: 25px;
+    font-family: cursive;
+    margin-left: 50px;
 }
 
 .message__info {
