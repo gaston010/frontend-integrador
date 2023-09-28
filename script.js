@@ -305,8 +305,113 @@ function renderizarServidores(servidores) {
 
     // Crear el elemento de icono
     const iconoElemento = document.createElement("img");
-    iconoElemento.src = "assets/" + icono;
-    iconoElemento.alt = nombre;
+
+    //voy a agregar un logo de manera automatica segun el texto del nombre del servidor
+    texto = nombre.toLowerCase();
+    switch (true) {
+      case texto.includes("deporte") || texto.includes("hinchada"):
+        iconoElemento.src = "assets/deportes.png";
+        iconoElemento.alt = "servidor de deportes";
+        break;
+      case texto.includes("literatura"):
+        iconoElemento.src = "assets/lengua-literatura.png";
+        iconoElemento.alt = "servidor de literatura";
+        break;
+      case texto.includes("viaje"):
+        iconoElemento.src = "assets/viajes.png";
+        iconoElemento.alt = "servidor de viajes";
+        break;
+      case texto.includes("musica"):
+        iconoElemento.src = "assets/musica.png";
+        iconoElemento.alt = "servidor de musica";
+        break;
+      case texto.includes("juego") || texto.includes("gamer") || texto.includes("game"):
+        iconoElemento.src = "assets/video-juegos.png";
+        iconoElemento.alt = "servidor de gamers";
+        break;
+      case texto.includes("prueba"):
+        iconoElemento.src = "assets/test.png";
+        iconoElemento.alt = "servidor de test";
+        break;
+      case texto.includes("niño") || texto.includes("niña") || texto.includes("infant"):
+        iconoElemento.src = "assets/nino.png";
+        iconoElemento.alt = "servidor infantil";
+        break;
+      case texto.includes("abogado") || texto.includes("ley") || texto.includes("legal"):
+        iconoElemento.src = "assets/ley.png";
+        iconoElemento.alt = "servidor legal";
+        break;
+      case texto.includes("moda"):
+        iconoElemento.src = "assets/moda.png";
+        iconoElemento.alt = "servidor de moda";
+        break;
+      case texto.includes("ropa") || texto.includes("estilo"):
+        iconoElemento.src = "assets/moda.png";
+        iconoElemento.alt = "servidor de la moda";
+        break;
+      case texto.includes("tienda") || texto.includes("comercio") || texto.includes("compra"):
+        iconoElemento.src = "assets/tienda.png";
+        iconoElemento.alt = "servidor legal";
+        break;
+      case texto.includes("program") || texto.includes("desarrollad") || texto.includes("web") || texto.includes("backend"):
+        iconoElemento.src = "assets/coder.png";
+        iconoElemento.alt = "servidor legal";
+        break;
+      case texto.includes("mujer") || texto.includes("femen"):
+        iconoElemento.src = "assets/mujer.png";
+        iconoElemento.alt = "servidor de la mujer";
+        break;
+      case texto.includes("libro") || texto.includes("literat") || texto.includes("letras") || texto.includes("lect"):
+        iconoElemento.src = "assets/libro.png";
+        iconoElemento.alt = "servidor para lectores";
+        break;
+      case texto.includes("artificial") || texto.includes("IA") || texto.includes("chatgpt") || texto.includes("big data"):
+        iconoElemento.src = "assets/inteligencia-artificial.png";
+        iconoElemento.alt = "servidor de ia";
+        break;
+      case texto.includes("hombre") || texto.includes("masculin"):
+        iconoElemento.src = "assets/hombre.png";
+        iconoElemento.alt = "servidor para hombres";
+        break;
+      case texto.includes("gato") || texto.includes("gatito"):
+        iconoElemento.src = "assets/gato.png";
+        iconoElemento.alt = "servidor de los gatos";
+        break;
+      case texto.includes("comida") || texto.includes("restaurant") || texto.includes("cena")  || texto.includes("chef"):
+        iconoElemento.src = "assets/comida.png";
+        iconoElemento.alt = "servidor de comidas";
+        break;
+      case texto.includes("ciencia") || texto.includes("investig"):
+        iconoElemento.src = "assets/ciencia.png";
+        iconoElemento.alt = "servidor para cientificos";
+        break;
+      case texto.includes("avion") || texto.includes("piloto"):
+        iconoElemento.src = "assets/avion.png";
+        iconoElemento.alt = "servidor para pilotos";
+        break;
+      case texto.includes("auto") || texto.includes("carreras") || texto.includes("formula 1") || texto.includes("carros"):
+        iconoElemento.src = "assets/avion.png";
+        iconoElemento.alt = "servidor para amantes de los automoviles";
+        break;
+      case texto.includes("arte") || texto.includes("pintura"):
+        iconoElemento.src = "assets/arte.png";
+        iconoElemento.alt = "servidor para amantes del arte";
+        break;
+      case texto.includes("anime") || texto.includes("animac") || texto.includes("animados"):
+        iconoElemento.src = "assets/anime.png";
+        iconoElemento.alt = "servidor para pilotos";
+        break;
+    
+
+      default:
+        iconoElemento.src = "assets/servidor.png";
+        iconoElemento.alt = "servidor";
+        break;
+    }
+
+
+    // iconoElemento.src = "assets/" + icono;
+    // iconoElemento.alt = nombre;
     iconoElemento.classList.add("icono");
     servidorElemento.appendChild(iconoElemento);
 
@@ -460,8 +565,8 @@ function obtenerMensajes(canal_id, server_id) {
       return response.json();
     })
     .then((data) => {
-      for (const mensaje of data) {        
-        
+      for (const mensaje of data) {                
+        console.log(mensaje)
         mensajes.push({
           id_mensaje: mensaje.Id,
           id_autor_mensaje: mensaje.Autor_ID,
@@ -786,7 +891,7 @@ function renderizarTodosServidores(todos) {
     //voy a agregar un logo de manera automatica segun el texto del nombre del servidor
     texto = nombre.toLowerCase();
     switch (true) {
-      case texto.includes("deporte"):
+      case texto.includes("deporte") || texto.includes("hinchada"):
         imagenServ.src = "assets/deportes.png";
         imagenServ.alt = "servidor de deportes";
         break;
@@ -802,7 +907,7 @@ function renderizarTodosServidores(todos) {
         imagenServ.src = "assets/musica.png";
         imagenServ.alt = "servidor de musica";
         break;
-      case texto.includes("juego"):
+      case texto.includes("juego") || texto.includes("gamer") || texto.includes("game"):
         imagenServ.src = "assets/video-juegos.png";
         imagenServ.alt = "servidor de gamers";
         break;
@@ -810,9 +915,78 @@ function renderizarTodosServidores(todos) {
         imagenServ.src = "assets/test.png";
         imagenServ.alt = "servidor de test";
         break;
+      case texto.includes("niño") || texto.includes("niña") || texto.includes("infant"):
+        imagenServ.src = "assets/nino.png";
+        imagenServ.alt = "servidor infantil";
+        break;
+      case texto.includes("abogado") || texto.includes("ley") || texto.includes("legal"):
+        imagenServ.src = "assets/ley.png";
+        imagenServ.alt = "servidor legal";
+        break;
+      case texto.includes("moda"):
+        imagenServ.src = "assets/moda.png";
+        imagenServ.alt = "servidor de moda";
+        break;
+      case texto.includes("ropa") || texto.includes("estilo"):
+        imagenServ.src = "assets/moda.png";
+        imagenServ.alt = "servidor de la moda";
+        break;
+      case texto.includes("tienda") || texto.includes("comercio") || texto.includes("compra"):
+        imagenServ.src = "assets/tienda.png";
+        imagenServ.alt = "servidor legal";
+        break;
+      case texto.includes("program") || texto.includes("desarrollad") || texto.includes("web") || texto.includes("backend"):
+        imagenServ.src = "assets/coder.png";
+        imagenServ.alt = "servidor legal";
+        break;
+      case texto.includes("mujer") || texto.includes("femen"):
+        imagenServ.src = "assets/mujer.png";
+        imagenServ.alt = "servidor de la mujer";
+        break;
+      case texto.includes("libro") || texto.includes("literat") || texto.includes("letras") || texto.includes("lect"):
+        imagenServ.src = "assets/libro.png";
+        imagenServ.alt = "servidor para lectores";
+        break;
+      case texto.includes("artificial") || texto.includes("IA") || texto.includes("chatgpt") || texto.includes("big data"):
+        imagenServ.src = "assets/inteligencia-artificial.png";
+        imagenServ.alt = "servidor de ia";
+        break;
+      case texto.includes("hombre") || texto.includes("masculin"):
+        imagenServ.src = "assets/hombre.png";
+        imagenServ.alt = "servidor para hombres";
+        break;
+      case texto.includes("gato") || texto.includes("gatito"):
+        imagenServ.src = "assets/gato.png";
+        imagenServ.alt = "servidor de los gatos";
+        break;
+      case texto.includes("comida") || texto.includes("restaurant") || texto.includes("cena")  || texto.includes("chef"):
+        imagenServ.src = "assets/comida.png";
+        imagenServ.alt = "servidor de comidas";
+        break;
+      case texto.includes("ciencia") || texto.includes("investig"):
+        imagenServ.src = "assets/ciencia.png";
+        imagenServ.alt = "servidor para cientificos";
+        break;
+      case texto.includes("avion") || texto.includes("piloto"):
+        imagenServ.src = "assets/avion.png";
+        imagenServ.alt = "servidor para pilotos";
+        break;
+      case texto.includes("auto") || texto.includes("carreras") || texto.includes("formula 1") || texto.includes("carros"):
+        imagenServ.src = "assets/avion.png";
+        imagenServ.alt = "servidor para amantes de los automoviles";
+        break;
+      case texto.includes("arte") || texto.includes("pintura"):
+        imagenServ.src = "assets/arte.png";
+        imagenServ.alt = "servidor para amantes del arte";
+        break;
+      case texto.includes("anime") || texto.includes("animac") || texto.includes("animados"):
+        imagenServ.src = "assets/anime.png";
+        imagenServ.alt = "servidor para pilotos";
+        break;
+    
 
       default:
-        imagenServ.src = "assets/video-juegos.png";
+        imagenServ.src = "assets/servidor.png";
         imagenServ.alt = "servidor";
         break;
     }
