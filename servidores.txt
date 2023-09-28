@@ -1,0 +1,131 @@
+
+const serversList = document.getElementById("serversList");
+
+function mostrarSpinner() {
+    spinner = document.querySelector(".spinner-container");
+    spinner.style.display = "flex";
+  }
+
+  function ocultarSpinner() {
+    spinner = document.querySelector(".spinner-container");
+    spinner.style.display = "none";
+  }
+
+
+//limpiar el aside de canales antes de recargar
+export function limpiarServidoresAnteriores() {
+    while (serversList.firstChild) {
+      serversList.removeChild(serversList.firstChild);
+    }
+  }
+
+
+//Trabajemos con la carga del aside de los servidores
+export function obtenerServidores() {
+    // const listadoDeServidores = [
+    //     {
+    //         icono: "musica.png",
+    //         nombre: "musica",
+    //         count: 8,
+    //     },
+    //     {
+    //         icono: "video-juegos.png",
+    //         nombre: "juegos",
+    //         count: 50,
+    //     },
+    //     {
+    //         icono: "Lengua-literatura.png",
+    //         nombre: "literatura",
+    //         count: 120,
+    //     },
+    //     {
+    //         icono: "deportes.png",
+    //         nombre: "deportes",
+    //         count: 20,
+    //     },
+    //     {
+    //         icono: "viajes.png",
+    //         nombre: "viajes",
+    //         count: 25,
+    //     }
+    // ];
+    const listadoDeServidores = []
+    mostrarSpinner()
+
+    
+    fetch("https://api-2-svwb.onrender.com/api/server/list").then((response) => {
+                    if (!response.ok) {
+                      throw new Error("No se pudo obtener la lista de servidores");
+                    }
+                    return response.json();
+                  }).then((data)=>{
+                    //llenarServidores(data)
+                    for (const servidor of data.Servers) {
+                      listadoDeServidores.push({
+                        icono: "video-juegos.png",
+                        nombre: servidor.nombre_servidor,
+                        count: 10
+                      })                    
+                      
+                    }
+                    ocultarSpinner()
+                    renderizarServidores(listadoDeServidores)
+                    return listadoDeServidores;
+                    
+                  }).catch((error) => {
+                  console.error("Error al obtener los Servidores:", error)
+                });
+
+                
+                // function llenarServidores(servidores) {
+                  
+                  
+                //   for (const servidor of servidores.Servers) {
+                //     listadoDeServidores.push({
+                //       icono: "video-juegos.png",
+                //       nombre: servidor.nombre_servidor,
+                //       count: 10
+                //     })
+                    
+                //   }
+                  
+                  
+                // }
+      return Promise.all(listadoDeServidores);
+                
+  }
+
+
+export function renderizarServidores(servidores) {
+    console.log("----------")
+    console.log(servidores)
+    limpiarServidoresAnteriores(); 
+    
+    for (const servidor of servidores) {
+      const { nombre, icono, count } = servidor;
+      const servidorElemento = document.createElement("div");
+      servidorElemento.classList.add("server-logo");
+      servidorElemento.style.marginBottom = "20px";
+      servidorElemento.addEventListener("click", () => {
+          menuSinCanales.style.display = "none"
+          menuCanales.style.display = "block"          
+        })
+  
+      // Crear el elemento de icono
+      const iconoElemento = document.createElement("img");
+      iconoElemento.src = "assets/" + icono;
+      iconoElemento.alt = nombre;    
+      iconoElemento.classList.add("icono");
+      servidorElemento.appendChild(iconoElemento);
+  
+      // Crear el elemento de nombre del canal
+      const nombreElemento = document.createElement("span");
+      nombreElemento.textContent = nombre;
+      nombreElemento.classList.add("nombre");    
+      servidorElemento.appendChild(nombreElemento);
+  
+      serversList.appendChild(servidorElemento);
+    }
+  }
+
+
