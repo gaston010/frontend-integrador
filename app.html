@@ -239,10 +239,13 @@
         </div>
       </div>
 
-      <!-- modal para crear nuevo servidor -->
+      <!-- modal para editar mensaje -->
       <div id="modal-editar-mensaje" class="modal">
         <div class="modal-content">
           <h2>Edicion de Mensaje</h2>
+          <div id="spinner-editar-mensaje">
+            <div class="spinner"></div>
+          </div>
           <form id="form-editar-mensaje" class="formModal">
             <div class="form-modal-item">
               <label for="input_nuevo_mensaje">Nuevo Mensaje:</label>
@@ -256,7 +259,7 @@
             </div>
 
             <div class="form-modal-item">
-              <button class="modal-button" type="submit">Guardar</button>
+              <button id="btn-submit-editar-mensaje" class="modal-button" type="submit">Guardar</button>
               <button id="btn-cancel-edicion-mensaje" class="modal-button">
                 Cancelar
               </button>

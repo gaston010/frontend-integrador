@@ -58,12 +58,15 @@ let aux_id_mensaje_editar = 0;
 let aux_contenido_mensaje = ""
 const input_nuevo_mensaje = document.getElementById("input_nuevo_mensaje");
 const modal_editar_mensaje = document.getElementById("modal-editar-mensaje");
+const form_editar_mensaje = document.getElementById("form-editar-mensaje");
 const btn_cancelar_edicion_mensaje = document.getElementById("btn-cancel-edicion-mensaje");
 
 btn_cancelar_edicion_mensaje.addEventListener("click", () => {
   modal_editar_mensaje.style.display = "none";
 });
 
+//capturemos el input del formulario de edicion de mensaje
+const input_edit_mensaje = document.getElementById("input_nuevo_mensaje")
 
 //manejo de datos del usuario
 const id_user = localStorage.getItem("userId");
@@ -357,6 +360,16 @@ function limpiarCanalesAnteriores() {
   }
 }
 
+function mostrarSpinnerById(id_spinner) {
+  spinner = document.getElementById(id_spinner);
+  spinner.style.display = "flex";
+}
+
+function ocultarSpinnerById(id_spinner) {
+  spinner = document.getElementById(id_spinner);
+  spinner.style.display = "none";
+}
+
 function mostrarSpinner() {
   spinner = document.querySelector(".spinner-container");
   spinner.style.display = "flex";
@@ -448,7 +461,7 @@ function obtenerMensajes(canal_id, server_id) {
     })
     .then((data) => {
       for (const mensaje of data) {        
-        console.log("MENSAJE DATA", mensaje)
+        
         mensajes.push({
           id_mensaje: mensaje.Id,
           id_autor_mensaje: mensaje.Autor_ID,
@@ -513,11 +526,7 @@ function renderizarMensajes(mensajes) {
     infoElemento.appendChild(idMensaje);
     infoElemento.appendChild(fechaElemento);  
 
-    //vamos a crear la funcionalida de submit del modal editar mensaje
-    modal_editar_mensaje.addEventListener("submit", (e) => {
-      e.preventDefault();
-      console.log("DATOS DEL MENSAJE A EDITAR",{aux_id_autor_mensaje, aux_id_mensaje_editar})
-    });
+    
 
     //voy a crear el boton de edicion de mensaje
     const btn_edit_message = document.createElement("i");
@@ -536,9 +545,7 @@ function renderizarMensajes(mensajes) {
         input_nuevo_mensaje.value = aux_contenido_mensaje
         modal_editar_mensaje.style.display = "block";
       }
-    };
-
-    
+    };    
     
     //aqui se podria agregar un salto de linea
     mensajeElemento.appendChild(infoElemento);
@@ -557,12 +564,58 @@ function renderizarMensajes(mensajes) {
     mensajeElemento.appendChild(cuerpoMensaje);
 
 
-    // const titulo = document.createElement("h1");
-    // titulo.innerHTML = "PRUEBA";
-    // mensajesList.appendChild(titulo);
+    
     mensajesList.appendChild(mensajeElemento);
   }
 }
+
+
+form_editar_mensaje.addEventListener("submit", (e) => {
+  e.preventDefault();      
+  const nuevo_texto = input_edit_mensaje.value;
+  if (nuevo_texto !== "") {        
+    //armemos el json    
+    const mensaje_modificado = {
+      mensajes: nuevo_texto
+    };
+
+    //mostremos el spinner
+    mostrarSpinnerById("spinner-editar-mensaje");
+
+
+    //armemos los datos de request
+    const requestOptions = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(mensaje_modificado),
+    };
+
+    fetch(`https://api-2-svwb.onrender.com/api/message/update/${+aux_id_mensaje_editar}`, requestOptions)
+      .then((response) => {
+        console.log(response)
+        if (!response.ok) {
+          throw new Error("Error al editar el mensaje");
+        }
+        input_edit_mensaje.value = "";
+        modal_editar_mensaje.style.display = "none";
+        return response.json();
+      })
+      .then((data) => {
+        //ocultarSpinner();
+        //obtenerMensajes(canal.id_canal)
+        obtenerMensajes(canal_en_uso);
+        ocultarSpinnerById("spinner-editar-mensaje");
+        return;
+      })
+      .catch((error) => {
+        console.error("Error al editar mensaje", error);
+      });
+  }
+
+});
+
+
+
 
 //funcion que emite mensajes
 function sendMessage(e) {
