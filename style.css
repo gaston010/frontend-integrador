@@ -35,33 +35,53 @@ img {
 }
 
 .nombre{
+    background-color: rgba(0, 0, 0, 0.5);
     position: absolute;
-    /*bottom: -20px;
-    */background-color: #7289da;
-    color: #ffffff;
-    padding: 5px;
+    color: yellow;
+    padding: 10px;
     border-radius: 5px;
-    font-size: 12px;
+    font-size: 20px;
     font-weight: bold;
     opacity: 0;
     pointer-events: none;
-    transform: translateX(-50%);   
-    transition: opacity 0.2s ease-in-out;   
-  }
+    transform: translateX(-50%);
+    transition: opacity 0.2s ease-in-out;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    -webkit-transition: opacity 0.2s ease-in-out;
+    -moz-transition: opacity 0.2s ease-in-out;
+    -ms-transition: opacity 0.2s ease-in-out;
+    -o-transition: opacity 0.2s ease-in-out;
+}
 
   .canal-logo{
     display: flex;
     flex-direction: row;
     margin: 10px;
     justify-content: flex-start;
-    align-items: center;    
-    border-radius: 10px;
+    align-items: center;
+    border-radius: 15px;
     padding: 10px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
 }
 
   .canal-logo:hover{
     background-color: #4189a1;
     cursor: pointer;
+  }
+
+  .icono{
+    height: 100%;
+    width: 100%;
   }
 
   
@@ -123,7 +143,7 @@ img {
     background-color:#17212F;
     overflow-y: scroll;
     height: 100vh;
-    width: 100px;
+    width: 150px;
 }
 
 .btn-action{
@@ -169,7 +189,9 @@ img {
 }
 
 .server-logo {
-    position: relative;    
+    position: relative;        
+    width: 80px;
+    height: 80px;
 }
 
 .server-logo > img {
