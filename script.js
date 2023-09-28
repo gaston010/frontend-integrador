@@ -83,8 +83,9 @@ var servidor_en_uso = 0;
 var canal_en_uso = 0;
 // //agreguemos accion al boton de logo discordia
 logo_btn.addEventListener("click", () => {
-  menuSinCanales.style.display = "block";
+  //menuSinCanales.style.display = "block";
   menuCanales.style.display = "none";
+  limpiarContenedorPrincipal()
 });
 
 
@@ -716,8 +717,7 @@ function renderizarTodosServidores(todos) {
     servidor_elegido_nombre = nombre;
     servidor_elegido_id = id;
     
-    console.log("servidor!!")
-    console.log(servidor_elegido_id)
+    
 
     const id_servidor_e = document.createElement("p");
     id_servidor_e.style.color = "#17212F"
@@ -789,7 +789,7 @@ function renderizarTodosServidores(todos) {
     //agreguemos el evento al logo de servidor
     servElemento.addEventListener("click", () => {      
       texto_pregunta.innerHTML = `Desea unirse al Servidor ${nombre}?`;
-      servidor_elegido_id = +id_servidor_e.innerHTML;
+      servidor_elegido_id = +id_servidor_e.innerHTML;      
       modal_unirse.style.display = "block";
       // menuSinCanales.style.display = "none"
       // menuCanales.style.display = "block"
@@ -823,7 +823,7 @@ btn_edit_user.addEventListener("click", (e) => {
 
 //evento de carga de la pagina al abrir la aplicacion
 document.addEventListener("DOMContentLoaded", () => {
-  menuSinCanales.style.display = "block";
+  //menuSinCanales.style.display = "block";
   menuCanales.style.display = "none";
   obtenerServidores().then((servidores) => {
     mostrarSpinner();

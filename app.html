@@ -53,7 +53,7 @@
           <button id="nuevo-canal">Crear Nuevo Canal</button>
         </div>
 
-        <div class="sidebar__profile">
+        <!-- <div class="sidebar__profile">
           <div>
             <span class="status"></span>
             <img src="assets/user4.jpg" alt="avatar" />
@@ -67,12 +67,12 @@
             <i class="fas fa-headset"></i>
             <i class="fas fa-cog"></i>
           </div>
-        </div>
+        </div> -->
       </div>
     </aside>
 
     <!-- barra lateral cuando usuario no eligio servidor -->
-    <aside id="sinservidor" class="sidebar">
+    <aside id="sinservidor" class="sidebar" style="display: none;">
       <div class="sidebar__top">
         <input type="text" placeholder="Find or start a conversation" />
       </div>
@@ -85,7 +85,7 @@
         <span>Nitro</span>
       </div>
 
-      <div class="sidebar__users">
+      <!-- <div class="sidebar__users">
         <div class="sidebar__usersHeader">
           <div class="sidebar__header">
             <h4>Direct messages</h4>
@@ -115,8 +115,8 @@
             <h4>ManInBlack</h4>
           </div>
         </div>
-      </div>
-      <div class="sidebar__profile">
+      </div> -->
+      <!-- <div class="sidebar__profile">
         <div>
           <span class="status"></span>
           <img src="assets/user4.jpg" alt="avatar" />
@@ -130,7 +130,7 @@
           <i class="fas fa-headset"></i>
           <i class="fas fa-cog"></i>
         </div>
-      </div>
+      </div> -->
     </aside>
 
     <!-- Aqui empieza la section de mensajes -->
@@ -138,25 +138,23 @@
       <div class="mensaje-container">
         <div class="chatHeader">
           <div class="chatHeader__left">
-            
             <img id="logo_usuario" alt="avatar usuario" />
 
             <h2 id="nombre_usuario_activo">ManInBlack</h2>
           </div>
-          <div class="chatHeader__right">            
+          <div class="chatHeader__right">
             <!-- <div class="search">
               <input type="text" placeholder="search" />
               <i class="fas fa-search fa-lg"></i>
             </div> -->
             <i id="btn-editar-usuario" class="btn-action fas fa-user-edit"></i>
-            <i id="btn-logout" class="btn-action fas fa-sign-out-alt"></i>            
-            
+            <i id="btn-logout" class="btn-action fas fa-sign-out-alt"></i>
           </div>
         </div>
       </div>
 
-       <!-- modal para crear nuevo canal -->
-       <div id="modalNewChannel" class="modal">
+      <!-- modal para crear nuevo canal -->
+      <div id="modalNewChannel" class="modal">
         <div class="modal-content">
           <h2>Crear Nuevo Canal</h2>
           <form id="form-crear-canal" class="formModal">
@@ -231,7 +229,9 @@
           <h2>Unirse a un Servidor</h2>
           <h3 id="pregunta"></h3>
           <div class="form-modal-item">
-            <button id="btn-confirmar-unirse" class="modal-button" >Confirmar</button>
+            <button id="btn-confirmar-unirse" class="modal-button">
+              Confirmar
+            </button>
             <button id="btn-cancel-unirse" class="modal-button">
               Cancelar
             </button>
@@ -254,7 +254,7 @@
                 required
               />
             </div>
-            
+
             <div class="form-modal-item">
               <button class="modal-button" type="submit">Guardar</button>
               <button id="btn-cancel-edicion-mensaje" class="modal-button">
@@ -269,9 +269,11 @@
       <div id="modal-negado-editar-mensaje" class="modal">
         <div class="modal-content">
           <h2>Edicion de Mensaje</h2>
-          <h3> Solo puede editar sus Mensajes</h3>
+          <h3>Solo puede editar sus Mensajes</h3>
           <div class="form-modal-item">
-            <button id="btn-negado-editar-mensaje" class="modal-button" >Aceptar</button>          
+            <button id="btn-negado-editar-mensaje" class="modal-button">
+              Aceptar
+            </button>
           </div>
         </div>
       </div>
@@ -282,9 +284,7 @@
       </div>
 
       <!-- cuerpo de despliegue de mensajes -->
-      <div class="chat__messages">
-        
-      </div>
+      <div class="chat__messages"></div>
 
       <!-- formulario de carga de mensaje nuevo -->
       <div class="chat__input">
@@ -299,8 +299,7 @@
           <button class="chat__inputButton" type="submit">Send</button>
         </form>
         <div class="chat__inputIcons">
-          <i id="boton-reload-messages" class="fas fa-sync-alt" ></i>
-          
+          <i id="boton-reload-messages" class="fas fa-sync-alt"></i>
         </div>
       </div>
     </section>
