@@ -4,15 +4,22 @@
 
 const form_edit_perfil = document.getElementById("form-edit-user");
 const id_usuario_activo = localStorage.getItem("userId");
+const btn_cancelar = document.getElementById("cancelar-btn");
 function mostrarSpinner() {
-    spinner = document.querySelector(".spinner-register");
+    spinner = document.getElementById("spinner-perfil");
     spinner.style.display = "flex";
   }
   
   function ocultarSpinner() {
-    spinner = document.querySelector(".spinner-register");
+    spinner = document.getElementById("spinner-perfil");
     spinner.style.display = "none";
   }
+
+//agregemos evento al boton de cancelar actualizacion
+btn_cancelar.addEventListener("click", (e) => {
+  e.preventDefault();
+  window.location.href = `app.html`;
+})
 
 form_edit_perfil.addEventListener("submit", (e) => {  
   e.preventDefault();  
@@ -23,7 +30,6 @@ form_edit_perfil.addEventListener("submit", (e) => {
         "nombre": nombre_input.value,        
         "nick": nick_input.value
   }
-
   
 
   const requestOptions = {
@@ -32,7 +38,7 @@ form_edit_perfil.addEventListener("submit", (e) => {
     body: JSON.stringify(data)
 }
 
-//mostrarSpinner()
+mostrarSpinner()
 
 fetch(`https://api-2-svwb.onrender.com/api/user/update/${id_usuario_activo}`, requestOptions)
     .then((response) => {
@@ -44,13 +50,8 @@ fetch(`https://api-2-svwb.onrender.com/api/user/update/${id_usuario_activo}`, re
     })
     .then((data) => {            
         new_nick = data.user[0].nick
-        // const res = data.Create.user[0]
-        // iduser = res.id_usuario
-        // nickuser = res.nick        
-        // localStorage.setItem("userId", iduser);
-        localStorage.setItem("userNick", new_nick);
-        // localStorage.setItem("userAvatar", "");
-        // ocultarSpinner()
+        localStorage.setItem("userNick", new_nick);        
+        ocultarSpinner()
 
         window.location.href = `app.html`;
 

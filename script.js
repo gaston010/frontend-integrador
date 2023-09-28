@@ -52,6 +52,19 @@ btn_negado_editar_mensaje.addEventListener("click", () => {
   modal_negado_editar_mensaje.style.display = "none";
 })
 
+//variables globales usadas para la edicion del mensaje
+let aux_id_autor_mensaje = 0;
+let aux_id_mensaje_editar = 0;
+let aux_contenido_mensaje = ""
+const input_nuevo_mensaje = document.getElementById("input_nuevo_mensaje");
+const modal_editar_mensaje = document.getElementById("modal-editar-mensaje");
+const btn_cancelar_edicion_mensaje = document.getElementById("btn-cancel-edicion-mensaje");
+
+btn_cancelar_edicion_mensaje.addEventListener("click", () => {
+  modal_editar_mensaje.style.display = "none";
+});
+
+
 //manejo de datos del usuario
 const id_user = localStorage.getItem("userId");
 
@@ -434,7 +447,9 @@ function obtenerMensajes(canal_id, server_id) {
     })
     .then((data) => {
       for (const mensaje of data) {        
+        console.log("MENSAJE DATA", mensaje)
         mensajes.push({
+          id_mensaje: mensaje.Id,
           id_autor_mensaje: mensaje.Autor_ID,
           autor: mensaje.Nick,
           mensaje: mensaje.Mensaje,
@@ -459,7 +474,7 @@ function renderizarMensajes(mensajes) {
   mensajes = mensajes.reverse();
   for (const item of mensajes) {
     
-    const {id_autor_mensaje, autor, mensaje, fecha } = item;    
+    const {id_mensaje, id_autor_mensaje, autor, mensaje, fecha } = item;    
     const mensajeElemento = document.createElement("div");
     mensajeElemento.classList.add("message");
     mensajeElemento.style.marginBottom = "20px";
@@ -479,6 +494,12 @@ function renderizarMensajes(mensajes) {
     const tituloElemento = document.createElement("h4");
     tituloElemento.innerHTML = autor;
     const fechaElemento = document.createElement("span");
+
+    //grabemos el id del mensaje para la edicion
+    const idMensaje = document.createElement("span");
+    idMensaje.innerHTML = id_mensaje;
+    idMensaje.style.color = "#17212F";
+
     //trabajemos la fecha
     const dato = new Date(fecha);
     const dia = dato.getDate();
@@ -488,7 +509,14 @@ function renderizarMensajes(mensajes) {
     fechaElemento.innerHTML = fecha_aux;
     //tituloElemento.appendChild(fechaElemento);
     infoElemento.appendChild(tituloElemento);
+    infoElemento.appendChild(idMensaje);
     infoElemento.appendChild(fechaElemento);  
+
+    //vamos a crear la funcionalida de submit del modal editar mensaje
+    modal_editar_mensaje.addEventListener("submit", (e) => {
+      e.preventDefault();
+      console.log("DATOS DEL MENSAJE A EDITAR",{aux_id_autor_mensaje, aux_id_mensaje_editar})
+    });
 
     //voy a crear el boton de edicion de mensaje
     const btn_edit_message = document.createElement("i");
@@ -497,9 +525,15 @@ function renderizarMensajes(mensajes) {
     btn_edit_message.id = "btn-edit-message";
 
     btn_edit_message.onclick = () => {
-      console.log({nick, autor})
+      console.log({id_mensaje})
       if (id_autor_mensaje != id_user){
         modal_negado_editar_mensaje.style.display = "block";
+      }else{
+        aux_id_autor_mensaje = id_autor_mensaje;
+        aux_id_mensaje_editar = id_mensaje;
+        aux_contenido_mensaje = mensaje;
+        input_nuevo_mensaje.value = aux_contenido_mensaje
+        modal_editar_mensaje.style.display = "block";
       }
     };
 
@@ -686,6 +720,7 @@ function renderizarTodosServidores(todos) {
     console.log(servidor_elegido_id)
 
     const id_servidor_e = document.createElement("p");
+    id_servidor_e.style.color = "#17212F"
     id_servidor_e.innerHTML = servidor_elegido_id;
     
     
@@ -753,7 +788,7 @@ function renderizarTodosServidores(todos) {
 
     //agreguemos el evento al logo de servidor
     servElemento.addEventListener("click", () => {      
-      texto_pregunta.innerHTML = `Desea unirse al Servidor ${nombre} ${id_servidor_e.innerHTML}?`;
+      texto_pregunta.innerHTML = `Desea unirse al Servidor ${nombre}?`;
       servidor_elegido_id = +id_servidor_e.innerHTML;
       modal_unirse.style.display = "block";
       // menuSinCanales.style.display = "none"

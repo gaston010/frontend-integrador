@@ -239,13 +239,39 @@
         </div>
       </div>
 
+      <!-- modal para crear nuevo servidor -->
+      <div id="modal-editar-mensaje" class="modal">
+        <div class="modal-content">
+          <h2>Edicion de Mensaje</h2>
+          <form id="form-editar-mensaje" class="formModal">
+            <div class="form-modal-item">
+              <label for="input_nuevo_mensaje">Nuevo Mensaje:</label>
+              <input
+                class="input-modal"
+                type="text"
+                id="input_nuevo_mensaje"
+                name="n_mensaje"
+                required
+              />
+            </div>
+            
+            <div class="form-modal-item">
+              <button class="modal-button" type="submit">Guardar</button>
+              <button id="btn-cancel-edicion-mensaje" class="modal-button">
+                Cancelar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
       <!-- modal edicion de mensaje -->
       <div id="modal-negado-editar-mensaje" class="modal">
         <div class="modal-content">
           <h2>Edicion de Mensaje</h2>
           <h3> Solo puede editar sus Mensajes</h3>
           <div class="form-modal-item">
-            <button id="btn-negado-editar-mensaje" class="modal-button" >Confirmar</button>          
+            <button id="btn-negado-editar-mensaje" class="modal-button" >Aceptar</button>          
           </div>
         </div>
       </div>
