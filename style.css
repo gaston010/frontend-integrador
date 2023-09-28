@@ -569,16 +569,20 @@ img {
 
 #grid-todos-servidores {
     display: grid;
-    grid-template-columns: repeat(4, 200px);
+    grid-template-columns: repeat(5, 200px);
     gap: 100px;
-    margin: 100px;/*Espacioentrelasceldas*/    
+    margin: 100px;
+    justify-content: center;
+    align-items: center;
     
 }
 
 /* clase que estiliza el elemento imagen de grilla de servidores */
 .img-serv-element{
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
+    background-color: rgba(65, 137, 161, 0.1);    
+    padding: 60px;
     
 }
 
