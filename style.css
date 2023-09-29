@@ -579,10 +579,10 @@ img {
 
 /* clase que estiliza el elemento imagen de grilla de servidores */
 .img-serv-element{
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     background-color: rgba(65, 137, 161, 0.1);    
-    padding: 60px;
+    padding: 30px;
     
 }
 
