@@ -11,11 +11,24 @@ initial-scale=1.0"
     <title>Login</title>
   </head>
   <body>
+    <!-- modal edicion de mensaje -->
+    <div id="modal-error" class="modal">
+      <div class="modal-content">
+        <h2>Error Login</h2>
+        <h3>Controle los datos por favor o registrese</h3>
+        <div>
+          <button id="btn-modal-error" class="modal-button">
+            Aceptar
+          </button>
+        </div>
+      </div>
+    </div>
     <form id="loginForm">
       <h1 id="titulo">Login</h1>      
       <div class="login-element">
         <label id="email" for="username">Email:</label>
         <input
+          class="input-form"
           type="text"
           id="username"
           name="username"
@@ -26,6 +39,7 @@ initial-scale=1.0"
       <div class="login-element">
         <label id="pass" for="password">Password:</label>
         <input
+          class="input-form"
           type="password"
           id="password"
           name="password"
@@ -46,6 +60,7 @@ initial-scale=1.0"
         </p>
       </div>
     </form>
+    
     <!-- componente spinner del servidor -->
     <div class="spinner-register">
         <div class="spinner"></div>

@@ -2,6 +2,13 @@
 //capturemos el boton de login
 const loginButton = document.getElementById("loginButton");
 const spinner = document.querySelector(".spinner-register");
+const modal_error = document.getElementById("modal-error");
+const btn_error_modal = document.getElementById("btn-modal-error");
+
+btn_error_modal.addEventListener("click", () => {
+  modal_error.style.display = "none";
+})
+
 
 //manejo de spinner
 function mostrarSpinner() {
@@ -32,14 +39,17 @@ loginButton.addEventListener("click", (e) => {
   };
 
   fetch(`https://api-2-svwb.onrender.com/api/user/login`, requestOptions)
-    .then((response) => {
+    .then((response) => {      
       if (!response.ok) {
         throw new Error("Error al logearse");
       }
-
+      
       return response.json();
     })
-    .then((data) => {
+    .then((data) => {      
+      if(data.status){
+        throw new Error("Error al logearse");
+      }      
       iduser = data.user_id;
       nickuser = data.Nick;
       avataruser = data.Avatar;
@@ -52,6 +62,8 @@ loginButton.addEventListener("click", (e) => {
       return;
     })
     .catch((error) => {
+      ocultarSpinner();
+      modal_error.style.display = "block";
       console.error("Error en el login", error);
     });
 });
