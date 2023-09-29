@@ -5,13 +5,12 @@
 const form_edit_perfil = document.getElementById("form-edit-user");
 const id_usuario_activo = localStorage.getItem("userId");
 const btn_cancelar = document.getElementById("cancelar-btn");
-function mostrarSpinner() {
-    spinner = document.getElementById("spinner-perfil");
+const spinner = document.querySelector(".spinner-register");
+function mostrarSpinner() {    
     spinner.style.display = "flex";
   }
   
-  function ocultarSpinner() {
-    spinner = document.getElementById("spinner-perfil");
+  function ocultarSpinner() {    
     spinner.style.display = "none";
   }
 
